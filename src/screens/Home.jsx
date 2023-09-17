@@ -1,15 +1,11 @@
-import {Text, SafeAreaView} from 'react-native'
-import Lottie from "lottie-react-native"
+import { Text, View, SafeAreaView } from "react-native";
 
-export default function Home(){
-    return(
-        <SafeAreaView style={{backgroundColor:"white"}}>
-            <Lottie
-                autoPlay
-                lopp
-                source={require("../animations/animation.json")}
-                style={{width:"100%", height:"100%"}}
-            />
-        </SafeAreaView>
-    )
+export default function Home() {
+  return (
+    <SafeAreaView style={{ backgroundColor: "white" }}>
+      <View className="bg-red-500">
+        <Text className="text-white">Tailwind</Text>
+      </View>
+    </SafeAreaView>
+  );
 }
