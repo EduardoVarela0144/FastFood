@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView } from "react-native";
+import { Text, View, SafeAreaView, FlatList } from "react-native";
 import Cards from "../components/Cards";
 
 export default function Home() {
@@ -20,17 +20,20 @@ export default function Home() {
         "https://www.vvsupremo.com/wp-content/uploads/2016/02/900X570_Mexican-Style-Hot-Dogs.jpg",
     },
   ];
+
   return (
     <SafeAreaView className="mt-12">
-      <Cards
-        name="Hamburguesa"
-        description="La mejor hamburguesa del mundo"
-        price="18"
-      />
-      <Cards
-        name="Hot Dog"
-        description="El mejor hot dog del mundo"
-        price="35"
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Cards
+            name={item.name}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+          />
+        )}
       />
     </SafeAreaView>
   );
