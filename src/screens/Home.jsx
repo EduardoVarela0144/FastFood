@@ -19,13 +19,22 @@ export default function Home() {
       image:
         "https://www.vvsupremo.com/wp-content/uploads/2016/02/900X570_Mexican-Style-Hot-Dogs.jpg",
     },
+    {
+      id: 3,
+      name: "Coca Cola",
+      price: 12.5,
+      description: "Alta en calorias",
+      image:
+        "https://cdn-3.expansion.mx/dims4/default/1b14363/2147483647/strip/true/crop/2096x1430+0+0/resize/1200x819!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F95%2F6c%2F722abfb544dcb4a46b9ca967a1ef%2Fistock-499925476.jpg",
+    },
   ];
 
   return (
-    <SafeAreaView className="mt-12">
+    <SafeAreaView className=" bg-amber-400 h-full pt-12">
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
+        className="p-4"
         renderItem={({ item }) => (
           <Cards
             name={item.name}
@@ -34,6 +43,7 @@ export default function Home() {
             image={item.image}
           />
         )}
+        ItemSeparatorComponent={<View className="h-3" />}
       />
     </SafeAreaView>
   );
