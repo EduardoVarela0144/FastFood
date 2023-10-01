@@ -3,7 +3,7 @@ import Home from "../screens/Home";
 import Cart from "../screens/Cart";
 import Notifications from "../screens/Notifications";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import NavigationCards from "./NavigationCards";
 const Tab = createBottomTabNavigator();
 
 export default function NavigationTap() {
@@ -37,7 +37,7 @@ export default function NavigationTap() {
       />
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={NavigationCards}
         options={{ headerShown: false }}
       />
       <Tab.Screen
