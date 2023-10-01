@@ -37,6 +37,7 @@ export default function Home() {
         className="p-4"
         renderItem={({ item }) => (
           <Cards
+            item={item}
             name={item.name}
             description={item.description}
             price={item.price}

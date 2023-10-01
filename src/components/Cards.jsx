@@ -2,7 +2,7 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native"
 
-export default function Cards({ name, price, description, image }) {
+export default function Cards({ name, price, description, image, item }) {
   const navigation = useNavigation();
   return (
     <View className="bg-white rounded-xl p-4 flex-row h-48">
@@ -15,7 +15,7 @@ export default function Cards({ name, price, description, image }) {
           <View className="rounded-full w-8 h-8 bg-amber-400 items-center justify-center">
             <MaterialCommunityIcons name="star" size={20} color={"white"} />
           </View>
-          <TouchableOpacity onPress={() => {navigation.navigate("Product Info")}} className="bg-slate-200 py-1 px-6 rounded-md">
+          <TouchableOpacity onPress={() => {navigation.navigate("Product Info", {item : item })}} className="bg-slate-200 py-1 px-6 rounded-md">
             <Text className="text-gray-400">Ver más</Text>
           </TouchableOpacity>
         </View>
