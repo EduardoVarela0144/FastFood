@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Cards({ name, price, description, image }) {
@@ -13,9 +13,9 @@ export default function Cards({ name, price, description, image }) {
           <View className="rounded-full w-8 h-8 bg-amber-400 items-center justify-center">
             <MaterialCommunityIcons name="star" size={20} color={"white"} />
           </View>
-          <View className="bg-slate-200 py-1 px-6 rounded-md">
+          <TouchableOpacity className="bg-slate-200 py-1 px-6 rounded-md">
             <Text className="text-gray-400">Ver más</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View className="flex-1">
