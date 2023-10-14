@@ -5,8 +5,12 @@ import Notifications from "../screens/Notifications";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NavigationCards from "./NavigationCards";
 const Tab = createBottomTabNavigator();
+import { CartContext } from "../context/CartContext";
+import { useContext } from "react";
 
 export default function NavigationTap() {
+  const { Cart: size, setCart} = useContext(CartContext);
+  const totalItemsInCart = size.reduce((total, item) => total + item.quantity, 0)
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -33,7 +37,7 @@ export default function NavigationTap() {
       <Tab.Screen
         name="Cart"
         component={Cart}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, tabBarBadge: totalItemsInCart }}
       />
       <Tab.Screen
         name="Home"

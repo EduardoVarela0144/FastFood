@@ -7,10 +7,30 @@ import {
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { CartContext } from "../context/CartContext";
+import { useContext, useEffect } from "react";
 
 export default function ProductInfo() {
   const route = useRoute();
   const { item } = route.params;
+
+  const { Cart, setCart } = useContext(CartContext);
+
+  const addToCart = (item, quantityChangue) => {
+    const existingItem = Cart.find((cartItem) => cartItem.id === item.Id);
+
+    if (existingItem) {
+      setCart((prevCart) =>
+        prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantityChangue }
+            : cartItem
+        )
+      );
+    }else{
+      setCart((prevCart) => [...prevCart, { ... item, quantity :  1}])
+    }
+  };
 
   return (
     <View className="flex-1">
@@ -24,7 +44,10 @@ export default function ProductInfo() {
           <View className="h-0.5 bg-amber-300 my-3" />
           <Text className="text-2xl font-bold">$ {item.price} MXN</Text>
           <Text>{item.description}</Text>
-          <TouchableOpacity className="bg-black rounded-xl w-48 py-4 px-2 mt-4 flex-row space-x-2">
+          <TouchableOpacity
+            onPress={() => addToCart(item, 1)}
+            className="bg-black rounded-xl w-48 py-4 px-2 mt-4 flex-row space-x-2"
+          >
             <MaterialCommunityIcons name="cart" size={20} color={"white"} />
 
             <Text className="text-white">Agregar al carrito</Text>
