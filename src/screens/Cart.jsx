@@ -2,7 +2,7 @@ import { Text, SafeAreaView, Button, View, FlatList } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import Cards_Products from "../components/Cards_Products";
 import { CartContext } from "../context/CartContext";
-
+import Lottie from "lottie-react-native";
 export default function Cart() {
   const { Cart, setCart } = useContext(CartContext);
   return (
@@ -12,14 +12,19 @@ export default function Cart() {
         <FlatList
           data={Cart}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <Cards_Products />}
+          renderItem={({ item }) => (<Cards_Products item={item} />) }
           ListEmptyComponent={
-            <View className="bg-red-500  justify-center items-center">
-              <Text>Aun no tienes productos en el carrito</Text>
+            <View className="items-center">
+              <Lottie
+                autoPlay
+                loop
+                style={{ width: 400, height: 400 }}
+                source={require("../animations/Cart.json")}
+              />
+              <Text className="font-semibold text-xl text-center absolute mt-20">Aun no tienes productos en el carrito 😖</Text>
             </View>
           }
         />
-        <Cards_Products />
       </View>
     </SafeAreaView>
   );

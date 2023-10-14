@@ -1,10 +1,11 @@
 
 import { View, Text } from "react-native"
-export default function Cards_Products(){
+export default function Cards_Products({item}){
 
     return (
-    <View>
-        <Text>hola mundo</Text>
+    <View className="bg-green-200">
+        <Text>{item.name}</Text>
+        <Text>{item.quantity}</Text>
     </View>
     )
 

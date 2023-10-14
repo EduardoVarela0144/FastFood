@@ -17,7 +17,7 @@ export default function ProductInfo() {
   const { Cart, setCart } = useContext(CartContext);
 
   const addToCart = (item, quantityChangue) => {
-    const existingItem = Cart.find((cartItem) => cartItem.id === item.Id);
+    const existingItem = Cart.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
       setCart((prevCart) =>
