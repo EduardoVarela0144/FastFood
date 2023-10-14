@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView, FlatList } from "react-native";
+import { Text, View, SafeAreaView, FlatList, Platform } from "react-native";
 import Cards from "../components/Cards";
 
 export default function Home() {
@@ -31,6 +31,11 @@ export default function Home() {
 
   return (
     <SafeAreaView className=" bg-amber-400 h-full pt-12">
+      <Text>{
+        Platform.OS === "android" ? 
+        "Soy un android"  : "Soy un ios"
+      }
+        </Text>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}

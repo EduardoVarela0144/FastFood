@@ -9,12 +9,12 @@ export default function NavigationCards() {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "", headerTransparent: true, headerShown: false }}
       />
       <Stack.Screen
         name="Product Info"
         component={ProductInfo}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "", headerTransparent: true, headerShown:false }}
       />
     </Stack.Navigator>
   );
