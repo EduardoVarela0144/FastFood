@@ -31,11 +31,6 @@ export default function Home() {
 
   return (
     <SafeAreaView className=" bg-amber-400 h-full pt-12">
-      <Text>{
-        Platform.OS === "android" ? 
-        "Soy un android"  : "Soy un ios"
-      }
-        </Text>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}

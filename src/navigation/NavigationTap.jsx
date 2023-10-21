@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
 import Cart from "../screens/Cart";
 import Notifications from "../screens/Notifications";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -7,6 +6,7 @@ import NavigationCards from "./NavigationCards";
 const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
+import AddProduct from "../screens/AddProduct";
 
 export default function NavigationTap() {
   const { Cart: size, setCart} = useContext(CartContext);
@@ -25,6 +25,10 @@ export default function NavigationTap() {
           } else if (route.name === "Notifications") {
             iconName = "message";
           }
+          else if (route.name === "New") {
+            iconName = "plus";
+          }
+          
           return (
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
@@ -47,6 +51,11 @@ export default function NavigationTap() {
       <Tab.Screen
         name="Notifications"
         component={Notifications}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="New"
+        component={AddProduct}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>
