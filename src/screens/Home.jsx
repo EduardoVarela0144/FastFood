@@ -1,6 +1,8 @@
-import { Text, View, SafeAreaView, FlatList, Platform } from "react-native";
+import { View, SafeAreaView, FlatList, Platform } from "react-native";
 import Cards from "../components/Cards";
-
+import { db } from "../utils/firebase"
+import { collection, query, orderBy, limit , getDocs } from "firebase/firestore"
+import { useEffect, useState } from "react";
 export default function Home() {
   const data = [
     {
@@ -29,19 +31,49 @@ export default function Home() {
     },
   ];
 
+  const [productos, setProductos] = useState([]);
+
+  const obtenerColeccion = async () => {
+    try{
+      const q = collection(db, "Products");
+      const querySnapshot = await getDocs(q);
+
+      const documentosArray = [];
+      querySnapshot.forEach((doc)=>{
+        documentosArray.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      })
+      setProductos(documentosArray);
+    }catch{
+      console.log("Erro al obtener los datos")
+    }
+  }
+
+  useEffect(()=>{
+    obtenerColeccion();
+  },[])
+
+  useEffect(()=>{
+    if(productos){
+      console.log(productos);
+    }
+  },[productos])
+
   return (
     <SafeAreaView className=" bg-amber-400 h-full pt-12">
       <FlatList
-        data={data}
+        data={productos}
         keyExtractor={(item) => item.id}
         className="p-4"
         renderItem={({ item }) => (
           <Cards
             item={item}
-            name={item.name}
-            description={item.description}
-            price={item.price}
-            image={item.image}
+            name={item.nombre}
+            description={item.nombre}
+            price={item.precio}
+            image={item.urlImagen}
           />
         )}
         ItemSeparatorComponent={<View className="h-3" />}
