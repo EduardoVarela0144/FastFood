@@ -48,11 +48,11 @@ export default function NavigationTap() {
         component={NavigationCards}
         options={{ headerShown: false }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Notifications"
         component={Notifications}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Tab.Screen
         name="New"
         component={AddProduct}
