@@ -16,8 +16,8 @@ export default function Cards_Products({ item, setCart }) {
     <View className="bg-amber-400 h-28 justify-center rounded-2xl px-4 shadow-sm">
       <View className=" w-full flex flex-row justify-between">
         <View className="flex-1 ">
-          <Text className="font-bold text-white text-xl">{item.name}</Text>
-          <Text className="font-bold text-2xl">$ {item.price} MXN</Text>
+          <Text className="font-bold text-white text-xl">{item.nombre}</Text>
+          <Text className="font-bold text-2xl">$ {item.precio} MXN</Text>
         </View>
         <View className="flex-1 flex-row items-center justify-cente">
           <View className=" flex-1 items-center">

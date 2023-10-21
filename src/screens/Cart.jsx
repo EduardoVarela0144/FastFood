@@ -9,7 +9,7 @@ export default function Cart() {
   let total = 0;
 
   Cart.forEach((cartItem) => {
-    const itemTotal = cartItem.quantity * cartItem.price;
+    const itemTotal = cartItem.quantity * cartItem.precio;
     total += itemTotal;
   });
 
