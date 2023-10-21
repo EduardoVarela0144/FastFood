@@ -71,7 +71,7 @@ export default function Home() {
           <Cards
             item={item}
             name={item.nombre}
-            description={item.nombre}
+            description={item.descripcion}
             price={item.precio}
             image={item.urlImagen}
           />

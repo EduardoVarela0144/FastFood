@@ -15,6 +15,8 @@ export default function AddProduct() {
   const [cantidad, setCantidad] = useState();
   const [precio, setPrecio] = useState();
   const [urlImagen, setUrlImagen] = useState();
+  const [descripcion, setDescipcion] = useState();
+
 
   const handlePostRequest = async () => {
     try {
@@ -25,6 +27,7 @@ export default function AddProduct() {
         cantidad: cantidad,
         precio: precio,
         urlImagen: urlImagen,
+        descripcion: descripcion,
       };
 
       const docRef = await addDoc(collectionRef, postData);
@@ -36,7 +39,7 @@ export default function AddProduct() {
   };
 
   const sendForm = () => {
-    if (nombre && cantidad && precio && urlImagen) {
+    if (nombre && cantidad && precio && urlImagen && descripcion) {
       handlePostRequest();
     } else {
       alert("Necesitar rellenar todos los campos");
@@ -87,6 +90,14 @@ export default function AddProduct() {
               keyboardType="numeric"
               value={cantidad}
               onChangeText={(text) => setCantidad(text)}
+            />
+          </View>
+          <View className="space-y-2 w-full">
+            <Text className="font-bold">Descripcion:</Text>
+            <TextInput
+              className="border border-1 border-amber-500 rounded-xl w-full h-16 px-2"
+              value={descripcion}
+              onChangeText={(text) => setDescipcion(text)}
             />
           </View>
           <View className="bg-amber-400 rounded-full w-full items-center py-4">

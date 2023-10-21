@@ -10,7 +10,7 @@ export default function Cards({ name, price, description, image, item }) {
         <Text className="font-bold text-xl">{name}</Text>
         <Text className="font-semibold text-md">$ {price} MXN</Text>
         <View className="w-full h-0.5 bg-slate-300 my-3" />
-        <Text numberOfLines={1}>{description}</Text>
+        <Text numberOfLines={1}>{description ? description : 'Sin descripción'}</Text>
         <View className="flex-row mt-4 items-center space-x-2">
           <View className="rounded-full w-8 h-8 bg-amber-400 items-center justify-center">
             <MaterialCommunityIcons name="star" size={20} color={"white"} />
