@@ -33,6 +33,12 @@ export default function AddProduct() {
       const docRef = await addDoc(collectionRef, postData);
 
       alert("Producto agregado con exito", docRef.id);
+
+      setCantidad(0);
+      setDescipcion("");
+      setNombre("");
+      setPrecio(0)
+      setUrlImagen("");
     } catch (error) {
       alert("Error al agregar producto", error);
     }
