@@ -7,12 +7,41 @@ import {
   Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../utils/firebase";
 
 export default function AddProduct() {
   const [nombre, setNombre] = useState();
   const [cantidad, setCantidad] = useState();
   const [precio, setPrecio] = useState();
   const [urlImagen, setUrlImagen] = useState();
+
+  const handlePostRequest = async () => {
+    try {
+      const collectionRef = collection(db, "Products");
+
+      const postData = {
+        nombre: nombre,
+        cantidad: cantidad,
+        precio: precio,
+        urlImagen: urlImagen,
+      };
+
+      const docRef = await addDoc(collectionRef, postData);
+
+      alert("Producto agregado con exito", docRef.id);
+    } catch (error) {
+      alert("Error al agregar producto", error);
+    }
+  };
+
+  const sendForm = () => {
+    if (nombre && cantidad && precio && urlImagen) {
+      handlePostRequest();
+    } else {
+      alert("Necesitar rellenar todos los campos");
+    }
+  };
 
   return (
     <TouchableOpacity
@@ -61,7 +90,7 @@ export default function AddProduct() {
             />
           </View>
           <View className="bg-amber-400 rounded-full w-full items-center py-4">
-            <TouchableOpacity>
+            <TouchableOpacity onPress={sendForm}>
               <Text className="font-bold text-white text-md">
                 Agregar Producto
               </Text>
