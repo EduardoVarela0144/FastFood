@@ -27,8 +27,8 @@ export const axiosInstanceFile = axios.create({
 });
 
 export const userUrl = "/ulsafoods/users";
-export const productUrl = "/ulsafoods/users";
-export const cartUrl = "/ulsafoods/users";
+export const productUrl = "/ulsafoods/products";
+export const cartUrl = "/ulsafoods/carts";
 
 
 
