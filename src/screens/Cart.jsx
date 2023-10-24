@@ -1,6 +1,6 @@
 import { Text, SafeAreaView, Button, View, FlatList } from "react-native";
 import { useContext, useEffect, useState } from "react";
-import Cards_Products from "../components/Cards_Products";
+import CardsProducts from "../components/CardsProducts";
 import { CartContext } from "../context/CartContext";
 import Lottie from "lottie-react-native";
 export default function Cart() {
@@ -25,7 +25,7 @@ export default function Cart() {
           data={Cart}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <Cards_Products item={item} setCart={setCart} />
+            <CardsProducts item={item} setCart={setCart} />
           )}
           ItemSeparatorComponent={<View className="h-6" />}
           ListEmptyComponent={
