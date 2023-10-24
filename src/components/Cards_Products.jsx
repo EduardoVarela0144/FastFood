@@ -21,7 +21,7 @@ export default function Cards_Products({ item, setCart }) {
         </View>
         <View className="flex-1 flex-row items-center justify-cente">
           <View className=" flex-1 items-center">
-            <TouchableOpacity onPress={() => changueQuantity(item, -1)} className="bg-red-500 w-8 h-8 items-center justify-center rounded-full">
+            <TouchableOpacity disabled={item.quantity === 0 ?  true : false} onPress={() => changueQuantity(item, -1)} className="bg-red-500 w-8 h-8 items-center justify-center rounded-full">
               <Text className="font-bold text-xl text-white">-</Text>
             </TouchableOpacity>
           </View>
