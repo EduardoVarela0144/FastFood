@@ -7,8 +7,6 @@ import {
   Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../utils/firebase";
 
 export default function AddProduct() {
   const [nombre, setNombre] = useState();
@@ -19,29 +17,7 @@ export default function AddProduct() {
 
 
   const handlePostRequest = async () => {
-    try {
-      const collectionRef = collection(db, "Products");
-
-      const postData = {
-        nombre: nombre,
-        cantidad: cantidad,
-        precio: precio,
-        urlImagen: urlImagen,
-        descripcion: descripcion,
-      };
-
-      const docRef = await addDoc(collectionRef, postData);
-
-      alert("Producto agregado con exito", docRef.id);
-
-      setCantidad(0);
-      setDescipcion("");
-      setNombre("");
-      setPrecio(0)
-      setUrlImagen("");
-    } catch (error) {
-      alert("Error al agregar producto", error);
-    }
+    alert('Agrega el producto');
   };
 
   const sendForm = () => {
