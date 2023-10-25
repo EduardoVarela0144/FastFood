@@ -5,6 +5,7 @@ import {
   Dimensions,
   SafeAreaView,
   TouchableOpacity,
+  Text,
 } from "react-native";
 import Pagination from "../../components/Register/Pagination";
 import RegisterInfo from "./RegisterInfo";
@@ -27,8 +28,8 @@ export default function Register() {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView className="flex-1">
-      <View className="flex w-full  px-2">
+    <SafeAreaView className="flex-1 ">
+      <View className="flex w-full px-4">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           className="bg-white w-10 h-10 rounded-full items-center justify-center"
@@ -48,8 +49,15 @@ export default function Register() {
         <RegisterInfo screenWidth={screenWidth} user={ROLES.student} />
         <RegisterInfo screenWidth={screenWidth} user={ROLES.seller} />
       </ScrollView>
-      <View className="items-center">
-        <Pagination currentPage={currentPage} numScreens={numScreens} />
+      <View className="space-y-6">
+        <View className="px-4">
+          <TouchableOpacity className="bg-orange-500 rounded-full py-2 px-4 items-center">
+            <Text className="text-white font-bold text-lg">Comenzar ahora</Text>
+          </TouchableOpacity>
+        </View>
+        <View className="items-center">
+          <Pagination currentPage={currentPage} numScreens={numScreens} />
+        </View>
       </View>
     </SafeAreaView>
   );
