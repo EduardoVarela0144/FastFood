@@ -55,7 +55,7 @@ export default function Register() {
         <View className="px-4">
           <TouchableOpacity
             onPress={() => navigation.navigate("Stepper", { rol: role[currentPage] })}
-            className="bg-orange-500 rounded-full py-2 px-4 items-center"
+            className="bg-[#3a6ea6] rounded-full py-2 px-4 items-center"
           >
             <Text className="text-white font-bold text-lg">Comenzar ahora</Text>
           </TouchableOpacity>

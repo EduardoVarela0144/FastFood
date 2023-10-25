@@ -34,9 +34,10 @@ export default function PageLayout({ children, color }) {
         <TouchableOpacity onPress={() => logout()}>
           <MaterialCommunityIcons name={"logout"} size={30} color="gray" />
         </TouchableOpacity>
-        <Text className="font-bold text-2xl">
+        <Text className="font-bold text-2xl self-start">
           Bienvenido, {Auth.firstName} 👋🏻
         </Text>
+        <Text/>
       </View>
       <View className="flex-1 BG-RED-500">{children}</View>
     </SafeAreaView>

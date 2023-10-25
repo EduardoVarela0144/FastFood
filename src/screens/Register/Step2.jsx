@@ -37,7 +37,7 @@ export default function Step2({
           ) : (
             <Avatar
               label={formData?.firstName + " " + formData?.lastName}
-              color="#F59E0B"
+              color="#3a6ea6"
               tintColor="white"
               size={100}
             />

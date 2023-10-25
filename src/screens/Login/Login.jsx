@@ -57,9 +57,9 @@ export default function Login() {
   };
   return (
     <View className="items-center flex flex-1">
-      <View className="w-full flex-1  bg-amber-400">
+      <View className="w-full flex-1  bg-[#3a6ea6]">
         <Text className="text-white font-bold mt-16 text-center text-3xl">
-          ULSAFOODS
+          UniFoods
         </Text>
 
         <View className="w-full flex-1">
@@ -116,7 +116,7 @@ export default function Login() {
               </View>
             </View>
 
-            <TouchableOpacity onPress={() => login()} className="bg-orange-500 rounded-full w-full items-center py-2">
+            <TouchableOpacity onPress={() => login()} className="bg-[#3a6ea6] rounded-full w-full items-center py-2">
               <Text className="text-white font-bold text-xl">
                 Iniciar sesión
               </Text>
@@ -125,7 +125,7 @@ export default function Login() {
             <View className="font-bold flex flex-row space-x-2 justify-center">
               <Text>¿Aún no tienes cuenta?</Text>
               <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                <Text className="font-bold text-orange-500">Registrarme</Text>
+                <Text className="font-bold text-[#3a6ea6]">Registrarme</Text>
               </TouchableOpacity>
             </View>
           </View>

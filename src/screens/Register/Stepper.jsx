@@ -130,7 +130,7 @@ export default function Stepper() {
       <SafeAreaView className="justify-center flex-1 p-2">
         <Text className="font-semibold text-4xl">
           Completa tu registro como
-          <Text className="font-bold text-orange-500">
+          <Text className="font-bold text-[#3a6ea6]">
             {" "}
             {ROLES_TRANSLATE[rol]}
           </Text>
@@ -145,7 +145,7 @@ export default function Stepper() {
                 <TouchableOpacity
                   onPress={() => changeStep(index + 1)}
                   className={`w-10 h-10 rounded-full border-2 ${
-                    step.completed ? "border-orange-500" : "border-gray-300"
+                    step.completed ? "border-[#3a6ea6]" : "border-gray-300"
                   } items-center justify-center`}
                 >
                   <Text>{index + 1}</Text>
@@ -153,7 +153,7 @@ export default function Stepper() {
                 {index < steps.length - 1 && (
                   <View
                     className={`h-2 w-16 ${
-                      step.completed ? "bg-orange-500" : "bg-gray-300"
+                      step.completed ? "bg-[#3a6ea6]" : "bg-gray-300"
                     }`}
                   ></View>
                 )}
