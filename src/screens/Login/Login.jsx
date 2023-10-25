@@ -85,6 +85,7 @@ export default function Login() {
                 Correo electrónico
               </Text>
               <TextInput
+              autoCapitalize="none"
                 placeholder="Correo electrónico"
                 className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
                 value={formData.email}
