@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Cart from "../screens/Home/Cart";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import NavigationCards from "./NavigatioProducts";
+import NavigationCards from "./NavigationProducts";
 const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
@@ -21,11 +21,11 @@ export default function NavigationTap() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "Home") {
+          if (route.name === "Productos") {
             iconName = "food";
-          } else if (route.name === "Cart") {
+          } else if (route.name === "Carrito") {
             iconName = "cart";
-          }  else if (route.name === "New") {
+          }  else if (route.name === "Nuevo") {
             iconName = "plus";
           }
 
@@ -33,28 +33,23 @@ export default function NavigationTap() {
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
         },
+        tabBarActiveTintColor: "#FBBF24"
+        
       })}
-      tabBarOptions={{
-        activeTintColor: "#FBBF24",
-      }}
+     
     >
       <Tab.Screen
-        name="Cart"
+        name="Carrito"
         component={Cart}
         options={{ headerShown: false, tabBarBadge: totalItemsInCart }}
       />
       <Tab.Screen
-        name="Home"
+        name="Productos"
         component={NavigationCards}
         options={{ headerShown: false }}
       />
-      {/* <Tab.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{ headerShown: false }}
-      /> */}
       <Tab.Screen
-        name="New"
+        name="Nuevo"
         component={AddProduct}
         options={{ headerShown: false }}
       />

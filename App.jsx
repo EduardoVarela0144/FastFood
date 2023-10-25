@@ -5,7 +5,7 @@ import { CartContext } from "./src/context/CartContext";
 import { AuthContext } from "./src/context/AuthContext";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import NavigationCards from "./src/navigation/NavigatioProducts";
+import NavigationCards from "./src/navigation/NavigationProducts";
 import NavigationLogin from "./src/navigation/NavigationLogin";
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
   let mainComponent = null;
 
-  if (Auth) {
+  if (!Auth) {
     mainComponent = <NavigationTap />;
   } else {
     mainComponent = <NavigationLogin />;
