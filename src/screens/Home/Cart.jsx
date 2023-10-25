@@ -9,7 +9,7 @@ export default function Cart() {
   let total = 0;
 
   Cart.forEach((cartItem) => {
-    const itemTotal = cartItem.quantity * cartItem.precio;
+    const itemTotal = cartItem.quantity * cartItem.price;
     total += itemTotal;
   });
 
@@ -23,7 +23,7 @@ export default function Cart() {
         <Text className="font-bold text-xl px-4 my-4">Total : $ {total} MXN</Text>
         <FlatList
           data={Cart}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id.toString()}
           renderItem={({ item }) => (
             <CardsCart item={item} setCart={setCart} />
           )}
