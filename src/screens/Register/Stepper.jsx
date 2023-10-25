@@ -5,7 +5,6 @@ import { ROLES, ROLES_TRANSLATE } from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import Step3 from "./Step3";
 
 export default function Stepper() {
   const route = useRoute();
@@ -13,17 +12,13 @@ export default function Stepper() {
 
   const [currentStep, setCurrentStep] = useState(1);
 
-  const steps =
-    rol === ROLES.student
-      ? [
-          { title: "Información general", completed: currentStep >= 1 },
-          { title: "Perfil estudiantil", completed: currentStep >= 2 },
-        ]
-      : [
-          { title: "Información general", completed: currentStep >= 1 },
-          { title: "Perfil de vendedor", completed: currentStep >= 2 },
-          { title: "Datos bancarios", completed: currentStep >= 3 },
-        ];
+  const steps = [
+    { title: "Información general", completed: currentStep >= 1 },
+    {
+      title: `Perfil ${rol === ROLES.student ? "estudiantil" : "de vendedor"}`,
+      completed: currentStep >= 2,
+    },
+  ];
 
   const changeStep = (step) => {
     setCurrentStep(step);
@@ -34,9 +29,7 @@ export default function Stepper() {
       case 1:
         return <Step1 />;
       case 2:
-        return <Step2 />;
-      case 3:
-        return <Step3 />;
+        return <Step2 rol={rol} />;
       default:
         return null;
     }
