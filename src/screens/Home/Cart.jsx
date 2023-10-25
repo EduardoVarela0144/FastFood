@@ -3,6 +3,8 @@ import { useContext } from "react";
 import CardsCart from "../../components/Home/CardsCart";
 import { CartContext } from "../../context/CartContext";
 import Lottie from "lottie-react-native";
+import PageLayout from "../../components/General/PageLayout";
+
 export default function Cart() {
   const { Cart, setCart } = useContext(CartContext);
 
@@ -13,36 +15,38 @@ export default function Cart() {
     total += itemTotal;
   });
 
-
   return (
-    <SafeAreaView className="flex-1 flex">
-      <View className="px-4 flex-1">
-        <Text className="font-bold text-2xl mb-6 text-center">
-          Carrito de compras
-        </Text>
-        <Text className="font-bold text-xl px-4 my-4">Total : $ {total} MXN</Text>
+    <PageLayout>
+      <View className="px-4 flex-1 py-4">
         <FlatList
           data={Cart}
           keyExtractor={(item) => item._id.toString()}
-          renderItem={({ item }) => (
-            <CardsCart item={item} setCart={setCart} />
-          )}
+          renderItem={({ item }) => <CardsCart item={item} setCart={setCart} />}
           ItemSeparatorComponent={<View className="h-6" />}
           ListEmptyComponent={
-            <View className="items-center">
-              <Lottie
-                autoPlay
-                loop
-                style={{ width: 400, height: 400 }}
-                source={require("../../animations/Cart.json")}
-              />
-              <Text className="font-semibold text-xl text-center absolute mt-20">
+            <View className="items-center  flex-1 h-72 space-y-2">
+              <View className="w-full flex-1">
+                <Lottie
+                  autoPlay
+                  loop
+                  resizeMode="cover"
+                  style={{ flex: 1 }}
+                  source={require("../../animations/Cart.json")}
+                />
+              </View>
+              
+              <Text className=" text-md text-center">
                 Aun no tienes productos en el carrito 😖
               </Text>
             </View>
           }
         />
+        <View className="bg-amber-400 rounded-xl">
+          <Text className="font-bold text-xl px-4 my-4 text-white">
+            Total : $ {total} MXN
+          </Text>
+        </View>
       </View>
-    </SafeAreaView>
+    </PageLayout>
   );
 }
