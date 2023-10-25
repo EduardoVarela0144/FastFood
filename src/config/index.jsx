@@ -43,3 +43,17 @@ export const BUILDINGS = [
     value: "E",
   },
 ];
+
+
+export const requiredFieldsTranslate = {
+  firstName: "Nombre",
+  lastName: "Apellido paterno",
+  middleName: "Apellido materno",
+  email: "Correo",
+  password: "Contraseña",
+  registrationNumber: "Matrícula",
+  accountNumber: "Número de cuenta",
+  profilePicture: "Foto de perfil",
+  major: "Carrera",
+  building: "Edificio",
+};

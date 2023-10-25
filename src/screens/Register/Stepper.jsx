@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ROLES, ROLES_TRANSLATE } from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { useSignUp } from "../../hooks/Users/useSignUp";
+import { requiredFieldsTranslate } from "../../config";
 
 export default function Stepper() {
   const { postSignUp } = useSignUp();
@@ -63,7 +70,34 @@ export default function Stepper() {
   };
 
   const saveUser = () => {
-    postSignUp(formData);
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "middleName",
+      "email",
+      "password",
+      "registrationNumber",
+      rol === ROLES.seller ? "accountNumber" : null,
+      // "profilePicture",
+      "major",
+      "building",
+    ];
+
+    const missingFields = requiredFields.filter(
+      (fieldName) => !formData[fieldName]
+    );
+
+    if (missingFields.length === 0) {
+      postSignUp(formData);
+    } else {
+      const translatedMissingFields = missingFields.map(
+        (fieldName) => requiredFieldsTranslate[fieldName]
+      );
+      const missingFieldsMessage = `Por favor complete los siguientes campos: ${translatedMissingFields.join(
+        ", "
+      )}`;
+      Alert.alert("Campos faltantes", missingFieldsMessage);
+    }
   };
 
   return (
