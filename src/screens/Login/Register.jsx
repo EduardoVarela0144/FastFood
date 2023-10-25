@@ -1,12 +1,6 @@
 import React, { useState, useRef } from "react";
-import {
-  View,
-  ScrollView,
-  Dimensions,
-  Text,
-  SafeAreaView,
-} from "react-native";
-import Pagination from "../components/Register/Pagination";
+import { View, ScrollView, Dimensions, Text, SafeAreaView } from "react-native";
+import Pagination from "../../components/Register/Pagination";
 
 const screenWidth = Dimensions.get("window").width;
 const numScreens = 2;
@@ -21,9 +15,8 @@ export default function Register() {
     setCurrentPage(page);
   };
 
-
   return (
-    <SafeAreaView  className="flex-1">
+    <SafeAreaView className="flex-1">
       <ScrollView
         ref={scrollViewRef}
         horizontal
@@ -32,16 +25,22 @@ export default function Register() {
         onScroll={onScroll}
         scrollEventThrottle={200}
       >
-        <View className="bg-red-500 flex-1 justify-center items-center" style={{ width: screenWidth }}>
+        <View
+          className="flex-1 justify-center items-center"
+          style={{ width: screenWidth }}
+        >
           <Text>Screen 1</Text>
         </View>
-        <View className="bg-red-500 flex-1 justify-center items-center" style={{ width: screenWidth }}>
-
+        <View
+          className="flex-1 justify-center items-center"
+          style={{ width: screenWidth }}
+        >
           <Text>Screen 2</Text>
         </View>
       </ScrollView>
-      <Pagination currentPage={currentPage} numScreens={numScreens}/>
+      <View className="items-center">
+        <Pagination currentPage={currentPage} numScreens={numScreens} />
+      </View>
     </SafeAreaView>
   );
 }
-

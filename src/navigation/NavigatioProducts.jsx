@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
-import ProductInfo from "../screens/ProductInfo";
+import Home from "../screens/Home/Home";
+import ProductInfo from "../screens/Home/ProductInfo";
 const Stack = createNativeStackNavigator();
 
 export default function NavigationCards() {

@@ -14,7 +14,7 @@ export default function Login() {
           loop
           resizeMode="cover"
           style={{ flex: 1 }}
-          source={require("../animations/LoginAnimation.json")}
+          source={require("../../animations/LoginAnimation.json")}
         />
       </View>
       <View className="w-full flex-1 items-center  px-10">

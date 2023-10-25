@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { useContext, useEffect } from "react";
 
 export default function ProductInfo() {

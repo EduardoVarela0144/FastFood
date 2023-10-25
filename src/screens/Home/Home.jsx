@@ -1,5 +1,5 @@
 import { View, SafeAreaView, FlatList } from "react-native";
-import Cards from "../components/Home/Cards";
+import Cards from "../../components/Home/Cards";
 import { useState } from "react";
 export default function Home() {
   const [productos, setProductos] = useState([]);

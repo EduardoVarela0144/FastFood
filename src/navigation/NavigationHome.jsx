@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Cart from "../screens/Cart";
-import Notifications from "../screens/Notifications";
+import Cart from "../screens/Home/Cart";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NavigationCards from "./NavigatioProducts";
 const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
-import AddProduct from "../screens/AddProduct";
+import AddProduct from "../screens/Admin/AddProduct";
 
 export default function NavigationTap() {
   const { Cart: size, setCart } = useContext(CartContext);
@@ -26,9 +25,7 @@ export default function NavigationTap() {
             iconName = "food";
           } else if (route.name === "Cart") {
             iconName = "cart";
-          } else if (route.name === "Notifications") {
-            iconName = "message";
-          } else if (route.name === "New") {
+          }  else if (route.name === "New") {
             iconName = "plus";
           }
 

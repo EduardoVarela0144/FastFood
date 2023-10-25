@@ -1,7 +1,7 @@
 import { Text, SafeAreaView, Button, View, FlatList } from "react-native";
 import { useContext, useEffect, useState } from "react";
-import CardsProducts from "../components/Home/CardsProducts";
-import { CartContext } from "../context/CartContext";
+import CardsProducts from "../../components/Home/CardsProducts";
+import { CartContext } from "../../context/CartContext";
 import Lottie from "lottie-react-native";
 export default function Cart() {
   const { Cart, setCart } = useContext(CartContext);
@@ -34,7 +34,7 @@ export default function Cart() {
                 autoPlay
                 loop
                 style={{ width: 400, height: 400 }}
-                source={require("../animations/Cart.json")}
+                source={require("../../animations/Cart.json")}
               />
               <Text className="font-semibold text-xl text-center absolute mt-20">
                 Aun no tienes productos en el carrito 😖
