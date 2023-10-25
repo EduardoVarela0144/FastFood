@@ -14,7 +14,7 @@ export default function Home() {
   }, [isFocused]);
   
   return (
-    <PageLayout color="yellow">
+    <PageLayout className="bg-white">
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
