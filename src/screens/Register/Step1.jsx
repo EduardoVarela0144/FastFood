@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default function Step1() {
+export default function Step1({ formData, handleFieldChange }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -25,6 +25,8 @@ export default function Step1() {
         <TextInput
           placeholder="Nombre"
           className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+          value={formData.firstName}
+          onChangeText={(text) => handleFieldChange("firstName", text)}
         />
       </View>
       <View className="space-y-1">
@@ -32,6 +34,8 @@ export default function Step1() {
         <TextInput
           placeholder="Apellido paterno"
           className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+          value={formData.lastName}
+          onChangeText={(text) => handleFieldChange("lastName", text)}
         />
       </View>
       <View className="space-y-1">
@@ -39,6 +43,8 @@ export default function Step1() {
         <TextInput
           placeholder="Apellido materno"
           className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+          value={formData.middleName}
+          onChangeText={(text) => handleFieldChange("middleName", text)}
         />
       </View>
       <View className="space-y-1">
@@ -46,6 +52,8 @@ export default function Step1() {
         <TextInput
           placeholder="Correo"
           className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+          value={formData.email}
+          onChangeText={(text) => handleFieldChange("email", text)}
         />
       </View>
       <View className="space-y-1">
@@ -56,6 +64,8 @@ export default function Step1() {
             placeholder="Contraseña"
             className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
             secureTextEntry={!showPassword}
+            value={formData.password}
+            onChangeText={(text) => handleFieldChange("password", text)}
           />
           <TouchableOpacity
             className="absolute right-2 top-2"

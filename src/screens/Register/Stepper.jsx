@@ -9,7 +9,25 @@ import Step2 from "./Step2";
 export default function Stepper() {
   const route = useRoute();
   const { rol } = route.params;
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    email: "",
+    password: "",
+    registrationNumber: "",
+    accountNumber: "",
+    profilePicture: "",
+    major: "",
+    building: "",
+    rol: rol,
+  });
 
+    const handleFieldChange = (fieldName, value) => {
+      setFormData({ ...formData, [fieldName]: value });
+    };
+  
+  
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
@@ -27,9 +45,9 @@ export default function Stepper() {
   const renderCurrentStepComponent = () => {
     switch (currentStep) {
       case 1:
-        return <Step1 />;
+        return <Step1 formData={formData} handleFieldChange={handleFieldChange} />;
       case 2:
-        return <Step2 rol={rol} />;
+        return <Step2 formData={formData} handleFieldChange={handleFieldChange} rol={rol} />;
       default:
         return null;
     }

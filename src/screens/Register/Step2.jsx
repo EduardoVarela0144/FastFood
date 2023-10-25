@@ -7,7 +7,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import { Avatar } from "@react-native-material/core";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default function Step2({ rol }) {
+export default function Step2({ rol, formData, handleFieldChange }) {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -39,6 +39,8 @@ export default function Step2({ rol }) {
         <TextInput
           placeholder="Matrícula"
           className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+          value={formData.registrationNumber}
+          onChangeText={(text) => handleFieldChange("registrationNumber", text)}
         />
       </View>
       {rol === ROLES.seller && (
@@ -47,6 +49,8 @@ export default function Step2({ rol }) {
           <TextInput
             placeholder="Número de cuenta bancaria"
             className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+            value={formData.accountNumber}
+            onChangeText={(text) => handleFieldChange("accountNumber", text)}
           />
         </View>
       )}
@@ -62,6 +66,8 @@ export default function Step2({ rol }) {
           placeholder="Selecciona tu carrera"
           selectedStyle={styles.selectedStyle}
           itemTextStyle={{ fontSize: 13, padding: 0 }}
+          value={formData.major}
+          onChange={(text) => handleFieldChange("major", text)}
         />
       </View>
       <View className="space-y-1">
@@ -76,6 +82,8 @@ export default function Step2({ rol }) {
           placeholder="Selecciona tu edificio"
           selectedStyle={styles.selectedStyle}
           itemTextStyle={{ fontSize: 13, padding: 0 }}
+          value={formData.building}
+          onChange={(text) => handleFieldChange("building", text)}
         />
       </View>
     </ScrollView>
