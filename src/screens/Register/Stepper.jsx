@@ -5,8 +5,10 @@ import { ROLES, ROLES_TRANSLATE } from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
+import { useSignUp } from "../../hooks/Users/useSignUp";
 
 export default function Stepper() {
+  const { postSignUp } = useSignUp();
   const route = useRoute();
   const { rol } = route.params;
   const [formData, setFormData] = useState({
@@ -60,10 +62,9 @@ export default function Stepper() {
     }
   };
 
-  const  saveUser =  () => {
-    alert(JSON.stringify(formData))
-
-  }
+  const saveUser = () => {
+    postSignUp(formData);
+  };
 
   return (
     <SafeAreaView className="flex flex-1 px-4">

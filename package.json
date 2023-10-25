@@ -9,10 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-material/core": "^1.3.7",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native-stack": "^6.9.13",
     "aaxios": "^0.18.1",
+    "axios": "^1.5.1",
     "expo": "~49.0.8",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.5.0",

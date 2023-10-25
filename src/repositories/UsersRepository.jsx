@@ -1,8 +1,15 @@
-import api, { userUrl } from "../services";
+import api, { userUrl } from "../services/api";
 
-class RoomsRepository {
+class UsersRepository {
     async login(user) {
         const response = await api.post(`${userUrl}/login`, user);
         return response.data;
       }
+
+      async signUp(user) {
+        const response = await api.post(`${userUrl}`, user);
+        return response.data;
+      }
 }
+
+export default new UsersRepository();

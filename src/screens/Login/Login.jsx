@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Text,
   View,
@@ -9,6 +9,8 @@ import {
 import Lottie from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AuthContext } from "../../context/AuthContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -17,6 +19,27 @@ export default function Login() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const { setAuth } = useContext(AuthContext);
+
+  const retrieveAuthentication = async () => {
+    try {
+      const storedUserInfo = await AsyncStorage.getItem("@user");
+      if (storedUserInfo) {
+        const userInfo = JSON.parse(storedUserInfo);
+        setAuth(userInfo);
+      }
+    } catch (error) {
+      console.error(
+        "Error al recuperar la autenticación desde AsyncStorage",
+        error
+      );
+    }
+  };
+
+  useEffect(() => {
+    retrieveAuthentication();
+  }, []);
 
   return (
     <View className="items-center flex flex-1">
