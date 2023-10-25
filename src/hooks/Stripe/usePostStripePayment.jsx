@@ -20,7 +20,7 @@ function usePostStripePayment() {
 
       const initSheet = await stripe.initPaymentSheet({
         paymentIntentClientSecret: clientSecret,
-        returnURL: '/'
+        // returnURL: '/'
       });
 
       // if (initSheet.error) return Alert.alert(initSheet.error.message);
