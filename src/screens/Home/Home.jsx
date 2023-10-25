@@ -1,10 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import CardsHome from "../../components/Home/CardsHome";
-import { useState } from "react";
 import PageLayout from "../../components/General/PageLayout";
+import { useGetProducts } from "../../hooks/Products/useGetProducts";
 export default function Home() {
-  const [productos, setProductos] = useState([]);
-
+  const { data } = useGetProducts();
   return (
     <PageLayout color="yellow">
       <FlatList
@@ -12,16 +11,16 @@ export default function Home() {
         contentContainerStyle={{
           paddingBottom: 80,
         }}
-        data={productos}
-        keyExtractor={(item) => item.id}
+        data={data}
+        keyExtractor={(item) => item._id}
         className="p-4"
         renderItem={({ item }) => (
           <CardsHome
             item={item}
-            name={item.nombre}
-            description={item.descripcion}
-            price={item.precio}
-            image={item.urlImagen}
+            name={item.name}
+            description={item.description}
+            price={item.price}
+            image={item.image}
           />
         )}
         ItemSeparatorComponent={<View className="h-3" />}

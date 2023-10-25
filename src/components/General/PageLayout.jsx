@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function PageLayout({ child, color }) {
+export default function PageLayout({ children, color }) {
   const { Auth, setAuth } = useContext(AuthContext);
   const keyToRemove = "@user";
 
@@ -34,7 +34,7 @@ export default function PageLayout({ child, color }) {
           Bienvenido, {Auth.firstName} 👋🏻
         </Text>
       </View>
-      <View className="flex-1">{child}</View>
+      <View className="flex-1 BG-RED-500">{children}</View>
     </SafeAreaView>
   );
 }
