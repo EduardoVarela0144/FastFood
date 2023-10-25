@@ -6,7 +6,7 @@ export default function RegisterInfo({screenWidth}) {
     className="flex-1 justify-center items-center"
     style={{ width: screenWidth }}
   >
-    <Text>Screen 1</Text>
+    <Text>Registrate como usuario</Text>
   </View>
   )
 }

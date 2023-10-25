@@ -1,5 +1,5 @@
 import { View, SafeAreaView, FlatList } from "react-native";
-import Cards from "../../components/Home/Cards";
+import CardsHome from "../../components/Home/CardsHome";
 import { useState } from "react";
 export default function Home() {
   const [productos, setProductos] = useState([]);
@@ -15,7 +15,7 @@ export default function Home() {
         keyExtractor={(item) => item.id}
         className="p-4"
         renderItem={({ item }) => (
-          <Cards
+          <CardsHome
             item={item}
             name={item.nombre}
             description={item.descripcion}
