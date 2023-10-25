@@ -1,11 +1,12 @@
-import { View, SafeAreaView, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import CardsHome from "../../components/Home/CardsHome";
 import { useState } from "react";
+import PageLayout from "../../components/General/PageLayout";
 export default function Home() {
   const [productos, setProductos] = useState([]);
 
   return (
-    <SafeAreaView className=" bg-amber-400 h-full pt-12">
+    <PageLayout color="yellow">
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -25,6 +26,6 @@ export default function Home() {
         )}
         ItemSeparatorComponent={<View className="h-3" />}
       />
-    </SafeAreaView>
+    </PageLayout>
   );
 }
