@@ -6,9 +6,12 @@ const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import AddProduct from "../screens/Admin/AddProduct";
-
+import { AuthContext } from "../context/AuthContext";
+import { ROLES } from "../config";
 export default function NavigationTap() {
   const { Cart: size, setCart } = useContext(CartContext);
+  const { Auth, setAuth } = useContext(AuthContext);
+
   const totalItemsInCart = size.reduce(
     (total, item) => total + item.quantity,
     0
@@ -25,7 +28,7 @@ export default function NavigationTap() {
             iconName = "food";
           } else if (route.name === "Carrito") {
             iconName = "cart";
-          }  else if (route.name === "Nuevo") {
+          } else if (route.name === "Nuevo") {
             iconName = "plus";
           }
 
@@ -33,10 +36,8 @@ export default function NavigationTap() {
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
         },
-        tabBarActiveTintColor: "#FBBF24"
-        
+        tabBarActiveTintColor: "#FBBF24",
       })}
-     
     >
       <Tab.Screen
         name="Carrito"
@@ -48,11 +49,13 @@ export default function NavigationTap() {
         component={NavigationCards}
         options={{ headerShown: false }}
       />
-      <Tab.Screen
-        name="Nuevo"
-        component={AddProduct}
-        options={{ headerShown: false }}
-      />
+      {Auth.rol === ROLES.admin && (
+        <Tab.Screen
+          name="Nuevo"
+          component={AddProduct}
+          options={{ headerShown: false }}
+        />
+      )}
     </Tab.Navigator>
   );
 }
