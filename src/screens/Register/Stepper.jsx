@@ -60,11 +60,7 @@ export default function Stepper() {
                 className="flex items-center justify-center flex-row "
               >
                 <TouchableOpacity
-                onPress={() =>
-                  changeStep(
-                   index +1
-                  )
-                }
+                  onPress={() => changeStep(index + 1)}
                   className={`w-10 h-10 rounded-full border-2 ${
                     step.completed ? "border-orange-500" : "border-gray-300"
                   } items-center justify-center`}
@@ -81,7 +77,7 @@ export default function Stepper() {
               </View>
             ))}
           </View>
-          <View className="flex-1">
+          <View className="flex-1 ">
             <Text>{steps[currentStep - 1].title}</Text>
             {renderCurrentStepComponent()}
           </View>

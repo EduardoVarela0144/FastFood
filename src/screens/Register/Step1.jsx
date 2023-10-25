@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Step1() {
@@ -9,7 +15,11 @@ export default function Step1() {
     setShowPassword(!showPassword);
   };
   return (
-    <View className="my-8 space-y-6">
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      className="mt-8 space-y-6 "
+      contentContainerStyle={{ paddingBottom: 200 }}
+    >
       <View className="space-y-1">
         <Text className="font-bold ">Nombre</Text>
         <TextInput
@@ -59,6 +69,6 @@ export default function Step1() {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
