@@ -1,13 +1,20 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 export default function Cards_Products({ item, setCart }) {
+  
   const changueQuantity = (item, amount) => {
-    setCart((prevCart) =>
-      prevCart.map((cartItem) =>
+    setCart((prevCart) => {
+      const updatedCart = prevCart.map((cartItem) =>
         cartItem.id === item.id
           ? { ...cartItem, quantity: cartItem.quantity + amount }
           : cartItem
-      )
-    );
+      );
+
+      const filteredCart = updatedCart.filter(
+        (cartItem) => cartItem.quantity > 0
+      );
+
+      return filteredCart;
+    });
   };
 
   return (
