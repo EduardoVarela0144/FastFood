@@ -2,8 +2,17 @@ import { View, Text, FlatList } from "react-native";
 import CardsHome from "../../components/Home/CardsHome";
 import PageLayout from "../../components/General/PageLayout";
 import { useGetProducts } from "../../hooks/Products/useGetProducts";
+import { useIsFocused } from "@react-navigation/native";
+import { useEffect } from "react";
+
 export default function Home() {
-  const { data } = useGetProducts();
+  const { data, refetch } = useGetProducts();
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) refetch();
+  }, [isFocused]);
+  
   return (
     <PageLayout color="yellow">
       <FlatList
