@@ -1,6 +1,9 @@
 import React from "react";
-import { View, TextInput, Text, ScrollView } from "react-native";
+import { View, TextInput, Text, ScrollView, StyleSheet } from "react-native";
 import { ROLES } from "../../config";
+import { DEGREES } from "../../config";
+import { Dropdown } from "react-native-element-dropdown";
+
 export default function Step2({ rol }) {
   return (
     <ScrollView
@@ -26,18 +29,54 @@ export default function Step2({ rol }) {
       )}
       <View className="space-y-1">
         <Text className="font-bold ">Carrera</Text>
-        <TextInput
-          placeholder="Apellido materno"
-          className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+        <Dropdown
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          data={DEGREES}
+          labelField="label"
+          valueField="value"
+          placeholder="Selecciona tu carrera"
+          selectedStyle={styles.selectedStyle}
+          itemTextStyle={{ fontSize: 13, padding: 0 }}
         />
       </View>
       <View className="space-y-1">
         <Text className="font-bold ">Edificio</Text>
-        <TextInput
-          placeholder="Correo"
-          className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+        <Dropdown
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          data={DEGREES}
+          labelField="label"
+          valueField="value"
+          placeholder="Selecciona tu edificio"
+          selectedStyle={styles.selectedStyle}
+          itemTextStyle={{ fontSize: 13, padding: 0 }}
         />
       </View>
     </ScrollView>
   );
 }
+const styles = StyleSheet.create({
+  dropdown: {
+    height: 45,
+    backgroundColor: "white",
+    borderColor: "white",
+    borderWidth: 2,
+    paddingLeft: 8,
+    borderRadius: 8,
+    width: "100%",
+  },
+  placeholderStyle: {
+    fontSize: 14,
+    color: "gray",
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+  },
+  selectedStyle: {
+    borderRadius: 10,
+    borderColor: "#ff4242",
+  },
+});
