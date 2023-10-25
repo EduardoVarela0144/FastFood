@@ -12,9 +12,6 @@ export default function Cards({ name, price, description, image, item }) {
         <View className="w-full h-0.5 bg-slate-300 my-3" />
         <Text numberOfLines={1}>{description ? description : 'Sin descripción'}</Text>
         <View className="flex-row mt-4 items-center space-x-2">
-          <View className="rounded-full w-8 h-8 bg-amber-400 items-center justify-center">
-            <MaterialCommunityIcons name="star" size={20} color={"white"} />
-          </View>
           <TouchableOpacity onPress={() => {navigation.navigate("Product Info", {item : item })}} className="bg-slate-200 py-1 px-6 rounded-md">
             <Text className="text-gray-400">Ver más</Text>
           </TouchableOpacity>

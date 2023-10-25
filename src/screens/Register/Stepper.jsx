@@ -80,15 +80,28 @@ export default function Stepper() {
       "email",
       "password",
       "registrationNumber",
-      rol === ROLES.seller ? "accountNumber" : null,
       "profilePicture",
       "major",
       "building",
     ];
 
-    const missingFields = requiredFields.filter(
-      (fieldName) => !formData[fieldName]
-    );
+    const requiredFieldsSeller = [
+      "firstName",
+      "lastName",
+      "middleName",
+      "email",
+      "password",
+      "registrationNumber",
+      "accountNumber",
+      "profilePicture",
+      "major",
+      "building",
+    ];
+
+    const required =
+      rol === ROLES.seller ? requiredFieldsSeller : requiredFields;
+
+    const missingFields = required.filter((fieldName) => !formData[fieldName]);
 
     if (missingFields.length === 0) {
       postSignUp(formData);
