@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View, ScrollView, Dimensions, Text, SafeAreaView } from "react-native";
 import Pagination from "../../components/Register/Pagination";
-
+import RegisterInfo from "./RegisterInfo";
 const screenWidth = Dimensions.get("window").width;
 const numScreens = 2;
 
@@ -25,18 +25,8 @@ export default function Register() {
         onScroll={onScroll}
         scrollEventThrottle={200}
       >
-        <View
-          className="flex-1 justify-center items-center"
-          style={{ width: screenWidth }}
-        >
-          <Text>Screen 1</Text>
-        </View>
-        <View
-          className="flex-1 justify-center items-center"
-          style={{ width: screenWidth }}
-        >
-          <Text>Screen 2</Text>
-        </View>
+        <RegisterInfo screenWidth={screenWidth} />
+        <RegisterInfo screenWidth={screenWidth} />
       </ScrollView>
       <View className="items-center">
         <Pagination currentPage={currentPage} numScreens={numScreens} />
