@@ -17,7 +17,7 @@ export default function Step2({ rol, formData, handleFieldChange }) {
       <View className="space-y-1 items-center ">
         <View>
           <Avatar
-            label="Eduardo Varela"
+            label={formData?.firstName+" "+ formData?.lastName}
             color="#F59E0B"
             tintColor="white"
             size={100}
@@ -67,7 +67,7 @@ export default function Step2({ rol, formData, handleFieldChange }) {
           selectedStyle={styles.selectedStyle}
           itemTextStyle={{ fontSize: 13, padding: 0 }}
           value={formData.major}
-          onChange={(text) => handleFieldChange("major", text)}
+          onChange={(item) => handleFieldChange("major", item.value)}
         />
       </View>
       <View className="space-y-1">
@@ -83,7 +83,7 @@ export default function Step2({ rol, formData, handleFieldChange }) {
           selectedStyle={styles.selectedStyle}
           itemTextStyle={{ fontSize: 13, padding: 0 }}
           value={formData.building}
-          onChange={(text) => handleFieldChange("building", text)}
+          onChange={(item) => handleFieldChange("building", item.value)}
         />
       </View>
     </ScrollView>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ROLES, ROLES_TRANSLATE } from "../../config";
@@ -23,11 +23,10 @@ export default function Stepper() {
     rol: rol,
   });
 
-    const handleFieldChange = (fieldName, value) => {
-      setFormData({ ...formData, [fieldName]: value });
-    };
-  
-  
+  const handleFieldChange = (fieldName, value) => {
+    setFormData({ ...formData, [fieldName]: value });
+  };
+
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
@@ -45,13 +44,26 @@ export default function Stepper() {
   const renderCurrentStepComponent = () => {
     switch (currentStep) {
       case 1:
-        return <Step1 formData={formData} handleFieldChange={handleFieldChange} />;
+        return (
+          <Step1 formData={formData} handleFieldChange={handleFieldChange} />
+        );
       case 2:
-        return <Step2 formData={formData} handleFieldChange={handleFieldChange} rol={rol} />;
+        return (
+          <Step2
+            formData={formData}
+            handleFieldChange={handleFieldChange}
+            rol={rol}
+          />
+        );
       default:
         return null;
     }
   };
+
+  const  saveUser =  () => {
+    alert(JSON.stringify(formData))
+
+  }
 
   return (
     <SafeAreaView className="flex flex-1 px-4">
@@ -96,11 +108,13 @@ export default function Stepper() {
         <View className="items-end">
           <TouchableOpacity
             className="bg-white w-20 h-20 rounded-full items-center justify-center"
-            onPress={() =>
-              changeStep(
-                currentStep < steps.length ? currentStep + 1 : currentStep
-              )
-            }
+            onPress={() => {
+              currentStep < steps.length
+                ? changeStep(
+                    currentStep < steps.length ? currentStep + 1 : currentStep
+                  )
+                : saveUser();
+            }}
           >
             <MaterialCommunityIcons
               name="arrow-right"
