@@ -3,6 +3,9 @@ import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ROLES, ROLES_TRANSLATE } from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
 
 export default function Stepper() {
   const route = useRoute();
@@ -13,13 +16,13 @@ export default function Stepper() {
   const steps =
     rol === ROLES.student
       ? [
-          { title: "Paso 1", completed: currentStep >= 1 },
-          { title: "Paso 2", completed: currentStep >= 2 },
+          { title: "Información general", completed: currentStep >= 1 },
+          { title: "Perfil estudiantil", completed: currentStep >= 2 },
         ]
       : [
-          { title: "Paso 1", completed: currentStep >= 1 },
-          { title: "Paso 2", completed: currentStep >= 2 },
-          { title: "Paso 3", completed: currentStep >= 3 },
+          { title: "Información general", completed: currentStep >= 1 },
+          { title: "Perfil de vendedor", completed: currentStep >= 2 },
+          { title: "Datos bancarios", completed: currentStep >= 3 },
         ];
 
   const changeStep = (step) => {
@@ -29,13 +32,11 @@ export default function Stepper() {
   const renderCurrentStepComponent = () => {
     switch (currentStep) {
       case 1:
-        return <Paso1Component />;
+        return <Step1 />;
       case 2:
-        return <Paso2Component />;
+        return <Step2 />;
       case 3:
-        return <Paso3Component />;
-      case 4:
-        return <Paso4Component />;
+        return <Step3 />;
       default:
         return null;
     }
@@ -75,8 +76,9 @@ export default function Stepper() {
               </View>
             ))}
           </View>
-          <View className=" flex-1">
-            <Text>Renderiza componente</Text>
+          <View className="flex-1">
+            <Text>{steps[currentStep - 1].title}</Text>
+            {renderCurrentStepComponent()}
           </View>
         </View>
         <View className="items-end">
