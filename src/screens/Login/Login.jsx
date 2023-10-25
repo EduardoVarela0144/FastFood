@@ -8,14 +8,18 @@ export default function Login() {
 
   return (
     <View className="items-center flex flex-1">
-      <View className="w-full flex-1 bg-amber-400">
-        <Lottie
-          autoPlay
-          loop
-          resizeMode="cover"
-          style={{ flex: 1 }}
-          source={require("../../animations/LoginAnimation.json")}
-        />
+      <View className="w-full flex-1  bg-amber-400">
+      <Text className="text-white font-bold mt-16 text-center text-3xl">ULSAFOODS</Text>
+
+        <View className="w-full flex-1">
+          <Lottie
+            autoPlay
+            loop
+            resizeMode="cover"
+            style={{ flex: 1 }}
+            source={require("../../animations/LoginAnimation.json")}
+          />
+        </View>
       </View>
       <View className="w-full flex-1 items-center  px-10">
         <View className="w-full  justify-center space-y-6 mt-8">
