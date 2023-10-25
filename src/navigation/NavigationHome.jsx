@@ -16,7 +16,7 @@ export default function NavigationTap() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Productos"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
