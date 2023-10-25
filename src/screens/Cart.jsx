@@ -1,6 +1,6 @@
 import { Text, SafeAreaView, Button, View, FlatList } from "react-native";
 import { useContext, useEffect, useState } from "react";
-import CardsProducts from "../components/CardsProducts";
+import CardsProducts from "../components/Home/CardsProducts";
 import { CartContext } from "../context/CartContext";
 import Lottie from "lottie-react-native";
 export default function Cart() {

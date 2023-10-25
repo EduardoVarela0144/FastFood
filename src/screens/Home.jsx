@@ -1,19 +1,13 @@
-import { View, SafeAreaView, FlatList, Platform } from "react-native";
-import Cards from "../components/Cards";
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useIsFocused } from "@react-navigation/native";
+import { View, SafeAreaView, FlatList } from "react-native";
+import Cards from "../components/Home/Cards";
+import { useState } from "react";
 export default function Home() {
-  const isFocused = useIsFocused();
-
   const [productos, setProductos] = useState([]);
-
-  
 
   return (
     <SafeAreaView className=" bg-amber-400 h-full pt-12">
       <FlatList
-      showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: 80,
         }}
