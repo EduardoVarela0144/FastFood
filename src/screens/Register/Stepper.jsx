@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import { ROLES_TRANSLATE } from "../../config";
+import { ROLES, ROLES_TRANSLATE } from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Stepper() {
@@ -10,15 +10,35 @@ export default function Stepper() {
 
   const [currentStep, setCurrentStep] = useState(1);
 
-  const steps = [
-    { title: "Paso 1", completed: currentStep >= 1 },
-    { title: "Paso 2", completed: currentStep >= 2 },
-    { title: "Paso 3", completed: currentStep >= 3 },
-    { title: "Paso 4", completed: currentStep >= 4 },
-  ];
+  const steps =
+    rol === ROLES.student
+      ? [
+          { title: "Paso 1", completed: currentStep >= 1 },
+          { title: "Paso 2", completed: currentStep >= 2 },
+        ]
+      : [
+          { title: "Paso 1", completed: currentStep >= 1 },
+          { title: "Paso 2", completed: currentStep >= 2 },
+          { title: "Paso 3", completed: currentStep >= 3 },
+        ];
 
   const changeStep = (step) => {
     setCurrentStep(step);
+  };
+
+  const renderCurrentStepComponent = () => {
+    switch (currentStep) {
+      case 1:
+        return <Paso1Component />;
+      case 2:
+        return <Paso2Component />;
+      case 3:
+        return <Paso3Component />;
+      case 4:
+        return <Paso4Component />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -32,9 +52,12 @@ export default function Stepper() {
           </Text>
         </Text>
         <View className="flex-1  py-4 space-y-4">
-          <View className="flex flex-row justify-between ">
+          <View className="flex flex-row">
             {steps.map((step, index) => (
-              <View key={index} className="flex items-center justify-center flex-row">
+              <View
+                key={index}
+                className="flex items-center justify-center flex-row "
+              >
                 <View
                   className={`w-10 h-10 rounded-full border-2 ${
                     step.completed ? "border-orange-500" : "border-gray-300"
@@ -59,7 +82,11 @@ export default function Stepper() {
         <View className="items-end">
           <TouchableOpacity
             className="bg-white w-20 h-20 rounded-full items-center justify-center"
-            onPress={() => changeStep(currentStep < steps.length ? currentStep + 1 : currentStep)}
+            onPress={() =>
+              changeStep(
+                currentStep < steps.length ? currentStep + 1 : currentStep
+              )
+            }
           >
             <MaterialCommunityIcons
               name="arrow-right"
