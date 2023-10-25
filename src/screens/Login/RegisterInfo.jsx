@@ -5,6 +5,7 @@ import { ROLES } from "../../config";
 import Lottie from "lottie-react-native";
 
 export default function RegisterInfo({ screenWidth, user }) {
+
   return (
     <View
       className="flex-1 justify-center items-center space-y-8 py-4 "

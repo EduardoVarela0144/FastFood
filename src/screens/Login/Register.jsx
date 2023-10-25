@@ -27,6 +27,8 @@ export default function Register() {
   };
   const navigation = useNavigation();
 
+  const role = [ROLES.student, ROLES.seller];
+
   return (
     <SafeAreaView className="flex-1 ">
       <View className="flex w-full px-4">
@@ -51,7 +53,10 @@ export default function Register() {
       </ScrollView>
       <View className="space-y-6">
         <View className="px-4">
-          <TouchableOpacity className="bg-orange-500 rounded-full py-2 px-4 items-center">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Stepper", { rol: role[currentPage] })}
+            className="bg-orange-500 rounded-full py-2 px-4 items-center"
+          >
             <Text className="text-white font-bold text-lg">Comenzar ahora</Text>
           </TouchableOpacity>
         </View>
