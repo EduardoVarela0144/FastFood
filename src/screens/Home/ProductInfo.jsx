@@ -9,11 +9,13 @@ import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ROLES } from "../../config";
 
 export default function ProductInfo() {
   const route = useRoute();
   const { item } = route.params;
-
+  const { Auth } = useContext(AuthContext);
   const { Cart, setCart } = useContext(CartContext);
 
   const addToCart = (item, quantityChangue) => {
@@ -44,6 +46,7 @@ export default function ProductInfo() {
           <View className="h-0.5 bg-amber-300 my-3" />
           <Text className="text-2xl font-bold">$ {item.price} MXN</Text>
           <Text>{item.description ? item.description : 'Sin descripción'}</Text>
+          {Auth.rol === ROLES.student && (
           <TouchableOpacity
             onPress={() => addToCart(item, 1)}
             className="bg-black rounded-xl w-48 py-4 px-2 mt-4 flex-row space-x-2"
@@ -51,7 +54,7 @@ export default function ProductInfo() {
             <MaterialCommunityIcons name="cart" size={20} color={"white"} />
 
             <Text className="text-white">Agregar al carrito</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>)}
         </View>
       </View>
     </View>

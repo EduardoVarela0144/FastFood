@@ -9,8 +9,8 @@ import AddProduct from "../screens/Admin/AddProduct";
 import { AuthContext } from "../context/AuthContext";
 import { ROLES } from "../config";
 export default function NavigationTap() {
-  const { Cart: size, setCart } = useContext(CartContext);
-  const { Auth, setAuth } = useContext(AuthContext);
+  const { Cart: size } = useContext(CartContext);
+  const { Auth } = useContext(AuthContext);
 
   const totalItemsInCart = size.reduce(
     (total, item) => total + item.quantity,
@@ -39,11 +39,13 @@ export default function NavigationTap() {
         tabBarActiveTintColor: "#FBBF24",
       })}
     >
-      <Tab.Screen
-        name="Carrito"
-        component={Cart}
-        options={{ headerShown: false, tabBarBadge: totalItemsInCart }}
-      />
+      {Auth.rol === ROLES.student && (
+        <Tab.Screen
+          name="Carrito"
+          component={Cart}
+          options={{ headerShown: false, tabBarBadge: totalItemsInCart }}
+        />
+      )}
       <Tab.Screen
         name="Productos"
         component={NavigationCards}
