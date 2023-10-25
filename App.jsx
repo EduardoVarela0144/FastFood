@@ -15,7 +15,7 @@ export default function App() {
 
   let mainComponent = null;
 
-  if (!Auth) {
+  if (Auth) {
     mainComponent = <NavigationTap />;
   } else {
     mainComponent = <NavigationLogin />;
