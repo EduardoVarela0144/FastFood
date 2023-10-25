@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -7,6 +7,7 @@ import {
   Keyboard,
   Alert,
   StyleSheet,
+  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PageLayout from "../../components/General/PageLayout";
@@ -14,6 +15,8 @@ import { usePostProduct } from "../../hooks/Products/usePostPorduct";
 import { requiredProductFieldsTranslate } from "../../config";
 import { useGetAllUsers } from "../../hooks/Users/useGetAllUsers";
 import { Dropdown } from "react-native-element-dropdown";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import useUploadFile from "../../hooks/Images/useUploadFile";
 
 export default function AddProduct() {
   const [formData, setFormData] = useState({
@@ -46,15 +49,16 @@ export default function AddProduct() {
     );
 
     if (missingFields.length === 0) {
-      postProduct(formData);
-      if (!isLoading) {
-        formData.name = "";
-        formData.price = "";
-        formData.image = "";
-        formData.quantity = "";
-        formData.description = "";
-        formData.seller = "";
-      }
+      postProduct(formData).then(() => {
+        setFormData({
+          name: "",
+          price: "",
+          quantity: "",
+          image: "",
+          description: "",
+          seller: "",
+        });
+      });
     } else {
       const translatedMissingFields = missingFields.map(
         (fieldName) => requiredProductFieldsTranslate[fieldName]
@@ -75,6 +79,15 @@ export default function AddProduct() {
       }))
     : [];
 
+  const { bottomSheetRef, BottomSheetr, urlImageFinal, LoadingModal } =
+    useUploadFile(true, true);
+
+  useEffect(() => {
+    if (urlImageFinal) {
+      handleFieldChange("image", urlImageFinal);
+    }
+  }, [urlImageFinal]);
+
   return (
     <PageLayout>
       <TouchableOpacity
@@ -82,8 +95,31 @@ export default function AddProduct() {
         className=" justify-center items-center"
         onPress={() => Keyboard.dismiss()}
       >
-        <SafeAreaView className="px-4 w-full h-full">
-          <View className=" rounded-xl px-4 w-full h-auto shadow-xl items-center justify-center space-y-4 ">
+        <GestureHandlerRootView className="flex w-full h-full">
+          <SafeAreaView className="rounded-xl px-4 w-full  shadow-xl items-center justify-center space-y-2 flex-1">
+            <View className="space-y-2 w-full">
+              <Text className="font-bold">Imagen</Text>
+              {formData.image ? (
+                <View className="items-center justify-center py-4">
+                  <Image
+                    source={{ uri: formData?.image }}
+                    className="aspect-video h-44 w-full rounded-md"
+                  />
+                </View>
+              ) : (
+                <TouchableOpacity
+                  className=" items-center justify-center py-4"
+                  onPress={() => bottomSheetRef.current?.expand()}
+                >
+                  <Image
+                    src={
+                      "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="
+                    }
+                    className="aspect-video h-44 w-full rounded-md"
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
             <View className="space-y-2 w-full">
               <Text className="font-bold ">Nombre del producto</Text>
               <TextInput
@@ -101,14 +137,7 @@ export default function AddProduct() {
                 onChangeText={(text) => handleFieldChange("price", text)}
               />
             </View>
-            <View className="space-y-2 w-full">
-              <Text className="font-bold">Url de la imagen</Text>
-              <TextInput
-                className="border border-1 border-amber-500 rounded-lg w-full h-8 px-2"
-                value={formData.image}
-                onChangeText={(text) => handleFieldChange("image", text)}
-              />
-            </View>
+
             <View className="space-y-2 w-full">
               <Text className="font-bold">Cantidad disponible</Text>
               <TextInput
@@ -150,8 +179,10 @@ export default function AddProduct() {
                 Agregar Producto
               </Text>
             </TouchableOpacity>
-          </View>
-        </SafeAreaView>
+            <BottomSheetr />
+            <LoadingModal />
+          </SafeAreaView>
+        </GestureHandlerRootView>
       </TouchableOpacity>
     </PageLayout>
   );

@@ -113,8 +113,8 @@ export default function Stepper() {
   }, [urlImageFinal]);
 
   return (
-    <SafeAreaView className="flex flex-1 px-4">
-      <GestureHandlerRootView className="justify-center flex-1 p-2">
+    <GestureHandlerRootView className="flex flex-1 px-4">
+      <SafeAreaView className="justify-center flex-1 p-2">
         <Text className="font-semibold text-4xl">
           Completa tu registro como
           <Text className="font-bold text-orange-500">
@@ -172,7 +172,7 @@ export default function Stepper() {
         </View>
         <BottomSheetr />
         <LoadingModal />
-      </GestureHandlerRootView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
