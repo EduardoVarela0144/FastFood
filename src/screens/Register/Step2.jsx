@@ -1,5 +1,13 @@
 import React from "react";
-import { View, TextInput, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { ROLES } from "../../config";
 import { DEGREES } from "../../config";
 import { BUILDINGS } from "../../config";
@@ -7,7 +15,12 @@ import { Dropdown } from "react-native-element-dropdown";
 import { Avatar } from "@react-native-material/core";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default function Step2({ rol, formData, handleFieldChange }) {
+export default function Step2({
+  rol,
+  formData,
+  handleFieldChange,
+  bottomSheetRef,
+}) {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -16,20 +29,24 @@ export default function Step2({ rol, formData, handleFieldChange }) {
     >
       <View className="space-y-1 items-center ">
         <View>
-          <Avatar
-            label={formData?.firstName+" "+ formData?.lastName}
-            color="#F59E0B"
-            tintColor="white"
-            size={100}
-          />
-            <TouchableOpacity
+          {formData?.profilePicture ? (
+            <Image
+              className="h-40 w-40 rounded-full"
+              source={{ uri: formData?.profilePicture }}
+            />
+          ) : (
+            <Avatar
+              label={formData?.firstName + " " + formData?.lastName}
+              color="#F59E0B"
+              tintColor="white"
+              size={100}
+            />
+          )}
+          <TouchableOpacity
+            onPress={() => bottomSheetRef.current?.expand()}
             className="absolute right-0 bottom-0 bg-white rounded-full h-8 w-8 items-center justify-center shadow-xl"
           >
-            <MaterialCommunityIcons
-              name="camera"
-              size={24}
-              color="black"
-            />
+            <MaterialCommunityIcons name="camera" size={24} color="black" />
           </TouchableOpacity>
         </View>
       </View>

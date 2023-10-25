@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   Text,
@@ -13,6 +13,8 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { useSignUp } from "../../hooks/Users/useSignUp";
 import { requiredFieldsTranslate } from "../../config";
+import useUploadFile from "../../hooks/Images/useUploadFile";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function Stepper() {
   const { postSignUp } = useSignUp();
@@ -59,6 +61,7 @@ export default function Stepper() {
       case 2:
         return (
           <Step2
+            bottomSheetRef={bottomSheetRef}
             formData={formData}
             handleFieldChange={handleFieldChange}
             rol={rol}
@@ -78,7 +81,7 @@ export default function Stepper() {
       "password",
       "registrationNumber",
       rol === ROLES.seller ? "accountNumber" : null,
-      // "profilePicture",
+      "profilePicture",
       "major",
       "building",
     ];
@@ -100,9 +103,18 @@ export default function Stepper() {
     }
   };
 
+  const { bottomSheetRef, BottomSheetr, urlImageFinal, LoadingModal } =
+    useUploadFile(true, true);
+
+  useEffect(() => {
+    if (urlImageFinal) {
+      handleFieldChange("profilePicture", urlImageFinal);
+    }
+  }, [urlImageFinal]);
+
   return (
     <SafeAreaView className="flex flex-1 px-4">
-      <View className=" justify-center flex-1 p-2">
+      <GestureHandlerRootView className="justify-center flex-1 p-2">
         <Text className="font-semibold text-4xl">
           Completa tu registro como
           <Text className="font-bold text-orange-500">
@@ -158,7 +170,9 @@ export default function Stepper() {
             />
           </TouchableOpacity>
         </View>
-      </View>
+        <BottomSheetr />
+        <LoadingModal />
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
