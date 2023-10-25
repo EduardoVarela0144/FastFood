@@ -1,8 +1,11 @@
 import React from "react";
 import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import Lottie from "lottie-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login() {
+  const navigation = useNavigation();
+
   return (
     <View className="items-center flex flex-1">
       <View className="w-full flex-1 bg-amber-400">
@@ -38,7 +41,7 @@ export default function Login() {
 
           <View className="font-bold flex flex-row space-x-2 justify-center">
             <Text>¿Aún no tienes cuenta?</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <Text className="font-bold text-orange-500">Registrarme</Text>
             </TouchableOpacity>
           </View>
