@@ -36,7 +36,7 @@ export default function NavigationTap() {
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
         },
-        tabBarActiveTintColor: "#FBBF24",
+        tabBarActiveTintColor: "#3a6ea6",
       })}
     >
       {Auth.rol === ROLES.student && (

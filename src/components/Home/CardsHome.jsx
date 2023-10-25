@@ -11,9 +11,9 @@ export default function Cards({ name, price, description, image, item }) {
         <Text className="font-semibold text-md">$ {price} MXN</Text>
         <View className="w-full h-0.5 bg-slate-300 my-3" />
         <Text numberOfLines={1}>{description ? description : 'Sin descripción'}</Text>
-        <View className="flex-row mt-4 items-center space-x-2">
-          <TouchableOpacity onPress={() => {navigation.navigate("Product Info", {item : item })}} className="bg-slate-200 py-1 px-6 rounded-md">
-            <Text className="text-gray-400">Ver más</Text>
+        <View className="flex-row mt-12 items-center space-x-2">
+          <TouchableOpacity onPress={() => {navigation.navigate("Product Info", {item : item })}} className="bg-[#3a6ea6] py-1 px-6 rounded-md">
+            <Text className="text-white">Ver más</Text>
           </TouchableOpacity>
         </View>
       </View>

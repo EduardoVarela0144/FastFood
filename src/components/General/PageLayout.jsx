@@ -28,7 +28,7 @@ export default function PageLayout({ children, color }) {
 
   return (
     <SafeAreaView
-      className={`${color === "yellow" && "bg-amber-400"} h-full pt-12`}
+      className={`${color === "yellow" && "bg-[#3a6ea6]"} h-full pt-12`}
     >
       <View className="rounded-md bg-white flex-row justify-between mx-2 px-2 py-3 shadow-xl">
         <TouchableOpacity onPress={() => logout()}>

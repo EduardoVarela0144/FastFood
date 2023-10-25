@@ -38,11 +38,11 @@ export default function ProductInfo() {
       <View className="flex-1">
         <Image className="flex-1 object-contain" source={{ uri: item.image }} />
       </View>
-      <View className="flex-1 bg-amber-300 p-4 justify-center">
+      <View className="flex-1 bg-[#3a6ea6] p-4 justify-center">
         <Text className="text-white font-bold text-3xl my-4">FastFood</Text>
         <View className="bg-white h-auto rounded-xl shadow-xl p-4">
-          <Text className="text-3xl text-amber-400 font-bold">{item.name}</Text>
-          <View className="h-0.5 bg-amber-300 my-3" />
+          <Text className="text-3xl text-[#3a6ea6] font-bold">{item.name}</Text>
+          <View className="h-0.5 bg-[#3a6ea6] my-3" />
           <Text className="text-2xl font-bold">$ {item.price} MXN</Text>
           <Text>{item.description ? item.description : 'Sin descripción'}</Text>
           {Auth.rol === ROLES.student && (

@@ -51,7 +51,7 @@ export default function Cart() {
             </View>
           }
         />
-        <View className="bg-amber-400 rounded-xl">
+        <View className="bg-[#3a6ea6] rounded-xl">
           <Text className="font-bold text-xl px-4 my-4 text-white">
             Total : $ {total} MXN
           </Text>
