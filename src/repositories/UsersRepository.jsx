@@ -10,6 +10,12 @@ class UsersRepository {
         const response = await api.post(`${userUrl}`, user);
         return response.data;
       }
+
+      async geAllUsers() {
+        const response = await api.get(`${userUrl}`);
+        return response.data;
+      }
+
 }
 
 export default new UsersRepository();

@@ -57,3 +57,13 @@ export const requiredFieldsTranslate = {
   major: "Carrera",
   building: "Edificio",
 };
+
+
+export const requiredProductFieldsTranslate = {
+  name : "Nombre",
+  price :"Precio",
+  quantity :"Cantidad ",
+  image : "Imagen",
+  description :"Descripción",
+  seller : "Vendedor"
+};

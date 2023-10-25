@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import ProductsRespository from "../../repositories/ProductsRespository";
 function useGetProducts() {
-  return useQuery(["useGetUsers"], () => ProductsRespository.getProducts()
+  return useQuery(["useGetProducts"], () => ProductsRespository.getProducts()
   );
 }
 export { useGetProducts };
