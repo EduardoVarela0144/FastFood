@@ -9,8 +9,12 @@ import { useContext } from "react";
 import AddProduct from "../screens/AddProduct";
 
 export default function NavigationTap() {
-  const { Cart: size, setCart} = useContext(CartContext);
-  const totalItemsInCart = size.reduce((total, item) => total + item.quantity, 0)
+  const { Cart: size, setCart } = useContext(CartContext);
+  const totalItemsInCart = size.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -24,11 +28,10 @@ export default function NavigationTap() {
             iconName = "cart";
           } else if (route.name === "Notifications") {
             iconName = "message";
-          }
-          else if (route.name === "New") {
+          } else if (route.name === "New") {
             iconName = "plus";
           }
-          
+
           return (
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
