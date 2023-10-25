@@ -20,3 +20,26 @@ export const DEGREES = [
     value: "Ingeniería de Software y Sistemas Computacionales",
   },
 ];
+
+export const BUILDINGS = [
+  {
+    label: "A",
+    value: "A",
+  },
+  {
+    label: "B",
+    value: "B",
+  },
+  {
+    label: "C",
+    value: "C",
+  },
+  {
+    label: "D",
+    value: "D",
+  },
+  {
+    label: "E",
+    value: "E",
+  },
+];

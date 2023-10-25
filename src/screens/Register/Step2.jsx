@@ -2,6 +2,7 @@ import React from "react";
 import { View, TextInput, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { ROLES } from "../../config";
 import { DEGREES } from "../../config";
+import { BUILDINGS } from "../../config";
 import { Dropdown } from "react-native-element-dropdown";
 import { Avatar } from "@react-native-material/core";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -69,7 +70,7 @@ export default function Step2({ rol }) {
           style={styles.dropdown}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
-          data={DEGREES}
+          data={BUILDINGS}
           labelField="label"
           valueField="value"
           placeholder="Selecciona tu edificio"
