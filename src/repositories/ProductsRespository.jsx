@@ -5,8 +5,8 @@ class ProductsRepository {
     const response = await api.get(`${productUrl}`);
     return response.data;
   }
-  async postProduct() {
-    const response = await api.post(`${productUrl}`);
+  async postProduct(product) {
+    const response = await api.post(`${productUrl}`,product);
     return response.data;
   }
 }

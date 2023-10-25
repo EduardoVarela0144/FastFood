@@ -25,7 +25,7 @@ export default function AddProduct() {
     seller: "",
   });
 
-  const { postProduct } = usePostProduct();
+  const { postProduct, isLoading } = usePostProduct();
 
   const handleFieldChange = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value });
@@ -47,6 +47,14 @@ export default function AddProduct() {
 
     if (missingFields.length === 0) {
       postProduct(formData);
+      if (!isLoading) {
+        formData.name = "";
+        formData.price = "";
+        formData.image = "";
+        formData.quantity = "";
+        formData.description = "";
+        formData.seller = "";
+      }
     } else {
       const translatedMissingFields = missingFields.map(
         (fieldName) => requiredProductFieldsTranslate[fieldName]
@@ -107,7 +115,7 @@ export default function AddProduct() {
                 className="border border-1 border-amber-500 rounded-lg w-full h-8 px-2"
                 keyboardType="numeric"
                 value={formData.quantity}
-                onChangeText={(text) => handleFieldChange("quiantity", text)}
+                onChangeText={(text) => handleFieldChange("quantity", text)}
               />
             </View>
             <View className="space-y-2 w-full">
@@ -131,7 +139,7 @@ export default function AddProduct() {
                 selectedStyle={styles.selectedStyle}
                 itemTextStyle={{ fontSize: 13, padding: 0 }}
                 value={formData.seller}
-                onChange={(item) => handleFieldChange("building", item.value)}
+                onChange={(item) => handleFieldChange("seller", item.value)}
               />
             </View>
             <TouchableOpacity

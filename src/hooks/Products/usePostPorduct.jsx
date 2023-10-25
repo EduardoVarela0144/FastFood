@@ -8,7 +8,7 @@ function usePostProduct() {
   const postProduct = async (user) => {
     try {
       await postProductMutation.mutateAsync(user);
-      alert("El producto se agregÓ correctamente");
+      alert("El producto se agregó correctamente");
     } catch (error) {
       if (
         error.response &&
