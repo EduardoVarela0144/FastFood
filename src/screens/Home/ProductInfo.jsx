@@ -8,7 +8,7 @@ import {
 import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { CartContext } from "../../context/CartContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export default function ProductInfo() {
   const route = useRoute();

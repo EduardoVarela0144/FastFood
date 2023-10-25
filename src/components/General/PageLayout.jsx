@@ -3,9 +3,12 @@ import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { CartContext } from "../../context/CartContext";
 
 export default function PageLayout({ children, color }) {
   const { Auth, setAuth } = useContext(AuthContext);
+  const {  setCart } = useContext(CartContext);
+
   const keyToRemove = "@user";
 
   const removeData = async (key) => {
@@ -19,6 +22,7 @@ export default function PageLayout({ children, color }) {
 
   const logout = () => {
     setAuth(null);
+    setCart([]);
     removeData(keyToRemove);
   };
 

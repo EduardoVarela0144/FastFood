@@ -11,10 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AuthContext } from "../../context/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useLogin } from "../../hooks/Users/useLogin";
 
 export default function Login() {
   const navigation = useNavigation();
   const [showPassword, setShowPassword] = useState(false);
+  const { postLogin } = useLogin();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -41,6 +43,18 @@ export default function Login() {
     retrieveAuthentication();
   }, []);
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const login = () => {
+    postLogin(formData);
+  };
+  
+  const handleFieldChange = (fieldName, value) => {
+    setFormData({ ...formData, [fieldName]: value });
+  };
   return (
     <View className="items-center flex flex-1">
       <View className="w-full flex-1  bg-amber-400">
@@ -73,6 +87,8 @@ export default function Login() {
               <TextInput
                 placeholder="Correo electrónico"
                 className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
+                value={formData.email}
+                onChangeText={(text) => handleFieldChange("email", text)}
               />
             </View>
             <View className="space-y-1">
@@ -83,6 +99,8 @@ export default function Login() {
                   placeholder="Contraseña"
                   className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
                   secureTextEntry={!showPassword}
+                  value={formData.password}
+                  onChangeText={(text) => handleFieldChange("password", text)}
                 />
                 <TouchableOpacity
                   className="absolute right-2 top-2"
@@ -97,7 +115,7 @@ export default function Login() {
               </View>
             </View>
 
-            <TouchableOpacity className="bg-orange-500 rounded-full w-full items-center py-2">
+            <TouchableOpacity onPress={() => login()} className="bg-orange-500 rounded-full w-full items-center py-2">
               <Text className="text-white font-bold text-xl">
                 Iniciar sesión
               </Text>
