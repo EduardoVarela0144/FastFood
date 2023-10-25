@@ -1,8 +1,10 @@
 import React from "react";
-import { View, TextInput, Text, ScrollView, StyleSheet } from "react-native";
+import { View, TextInput, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { ROLES } from "../../config";
 import { DEGREES } from "../../config";
 import { Dropdown } from "react-native-element-dropdown";
+import { Avatar } from "@react-native-material/core";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Step2({ rol }) {
   return (
@@ -11,6 +13,26 @@ export default function Step2({ rol }) {
       className="mt-8 space-y-6 "
       contentContainerStyle={{ paddingBottom: 200 }}
     >
+      <View className="space-y-1 items-center ">
+        <View>
+          <Avatar
+            label="Eduardo Varela"
+            color="#F59E0B"
+            tintColor="white"
+            size={100}
+          />
+            <TouchableOpacity
+            className="absolute right-0 bottom-0 bg-white rounded-full h-8 w-8 items-center justify-center shadow-xl"
+          >
+            <MaterialCommunityIcons
+              name="camera"
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+
       <View className="space-y-1">
         <Text className="font-bold ">Matrícula</Text>
         <TextInput

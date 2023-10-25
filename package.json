@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-material/core": "^1.3.7",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native-stack": "^6.9.13",
     "aaxios": "^0.18.1",
