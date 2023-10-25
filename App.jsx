@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import NavigationTap from "./src/navigation/NavigationTap";
+import NavigationTap from "./src/navigation/NavigationHome";
 import { CartContext } from "./src/context/CartContext";
 import { AuthContext } from "./src/context/AuthContext";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Login from "./src/screens/Login";
+import NavigationCards from "./src/navigation/NavigatioProducts";
+import NavigationLogin from "./src/navigation/NavigationLogin";
 
 export default function App() {
   const [Cart, setCart] = useState([]);
@@ -17,7 +18,7 @@ export default function App() {
   if (Auth) {
     mainComponent = <NavigationTap />;
   } else {
-    mainComponent = <Login />;
+    mainComponent = <NavigationLogin />;
   }
   return (
     <QueryClientProvider client={queryClient}>

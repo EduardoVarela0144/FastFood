@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Cart from "../screens/Cart";
 import Notifications from "../screens/Notifications";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import NavigationCards from "./NavigationCards";
+import NavigationCards from "./NavigatioProducts";
 const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
