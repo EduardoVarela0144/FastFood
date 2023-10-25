@@ -13,7 +13,7 @@ export default function Home() {
         }}
         data={data}
         keyExtractor={(item) => item._id}
-        className="p-4"
+        className="px-2 py-4"
         renderItem={({ item }) => (
           <CardsHome
             item={item}
