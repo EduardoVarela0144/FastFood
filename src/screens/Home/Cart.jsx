@@ -15,6 +15,8 @@ export default function Cart() {
     total += itemTotal;
   });
 
+  console.log(Cart);
+
   return (
     <PageLayout>
       <View className="px-4 flex-1 py-4">
