@@ -5,9 +5,11 @@ import { CartContext } from "../../context/CartContext";
 import Lottie from "lottie-react-native";
 import PageLayout from "../../components/General/PageLayout";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import { usePostStripePayment } from "../../hooks/Stripe/usePostStripePayment";
+import { AuthContext } from "../../context/AuthContext";
 export default function Cart() {
   const { Cart, setCart } = useContext(CartContext);
+  const { Auth } = useContext(AuthContext);
 
   let total = 0;
 
@@ -16,7 +18,12 @@ export default function Cart() {
     total += itemTotal;
   });
 
-  console.log(Cart);
+  const { postStripePayment } = usePostStripePayment();
+
+  const pay = {
+    name: Auth.firstName,
+    amount: total,
+  };
 
   return (
     <PageLayout>
@@ -49,8 +56,16 @@ export default function Cart() {
             Total : $ {total} MXN
           </Text>
         </View>
-        <TouchableOpacity className="bg-black rounded-xl w-full py-4 px-4 mt-4 flex-row space-x-2 justify-center">
-          <MaterialCommunityIcons name="credit-card-outline" size={20} color={"white"} />
+        <TouchableOpacity
+          disabled={total === 0 ? true : false}
+          onPress={() => postStripePayment(pay)}
+          className="bg-black rounded-xl w-full py-4 px-4 mt-4 flex-row space-x-2 justify-center"
+        >
+          <MaterialCommunityIcons
+            name="credit-card-outline"
+            size={20}
+            color={"white"}
+          />
 
           <Text className="text-white">Pagar ahora</Text>
         </TouchableOpacity>
