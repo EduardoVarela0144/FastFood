@@ -9,6 +9,8 @@ import AddProduct from "../screens/Admin/AddProduct";
 import SellerAddProduct from "../screens/Seller/SellerAddProduct";
 import { AuthContext } from "../context/AuthContext";
 import { ROLES } from "../config";
+import Users from "../screens/Admin/Users";
+
 export default function NavigationTap() {
   const { Cart: size } = useContext(CartContext);
   const { Auth } = useContext(AuthContext);
@@ -31,7 +33,10 @@ export default function NavigationTap() {
             iconName = "cart";
           } else if (route.name === "Nuevo") {
             iconName = "plus";
+          } else if (route.name === "Usuarios") {
+            iconName = "account-group";
           }
+
 
           return (
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
@@ -63,6 +68,13 @@ export default function NavigationTap() {
         <Tab.Screen
           name="Nuevo"
           component={SellerAddProduct}
+          options={{ headerShown: false }}
+        />
+      )}
+      {Auth.rol === ROLES.admin && (
+        <Tab.Screen
+          name="Usuarios"
+          component={Users}
           options={{ headerShown: false }}
         />
       )}
