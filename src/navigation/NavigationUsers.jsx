@@ -9,7 +9,7 @@ export default function NavigationUsers() {
     <Stack.Navigator>
       <Stack.Screen
         name="Users"
-        component={EditUser}
+        component={Users}
         options={{ title: "", headerTransparent: true, headerShown: false }}
       />
       <Stack.Screen

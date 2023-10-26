@@ -46,7 +46,7 @@ export default function Users() {
         <TouchableOpacity
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => {
-            navigation.navigate("Product Info", { item: item });
+            navigation.navigate("EditUser", { item: item });
           }}
         >
           <Text className="text-white">Editar</Text>

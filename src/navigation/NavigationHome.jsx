@@ -10,7 +10,7 @@ import AddProduct from "../screens/Admin/AddProduct";
 import SellerAddProduct from "../screens/Seller/SellerAddProduct";
 import { AuthContext } from "../context/AuthContext";
 import { ROLES } from "../config";
-import Users from "../screens/Admin/Users";
+import NavigationUsers from "./NavigationUsers";
 
 export default function NavigationTap() {
   const { Cart: size } = useContext(CartContext);
@@ -84,7 +84,7 @@ export default function NavigationTap() {
       {Auth.rol === ROLES.admin && (
         <Tab.Screen
           name="Usuarios"
-          component={Users}
+          component={NavigationUsers}
           options={{ headerShown: false }}
         />
       )}
