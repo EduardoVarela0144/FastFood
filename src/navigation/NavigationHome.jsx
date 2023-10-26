@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Cart from "../screens/Home/Cart";
+import Cart from "../screens/Home/components/Cart";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NavigationCards from "./NavigationProducts";
 const Tab = createBottomTabNavigator();

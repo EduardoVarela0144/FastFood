@@ -6,10 +6,10 @@ import {
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import { ROLES } from "../../config";
+import { AuthContext } from "../../../context/AuthContext";
+import { ROLES } from "../../../config";
 
 export default function ProductInfo() {
   const route = useRoute();

@@ -1,12 +1,12 @@
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { useContext } from "react";
-import CardsCart from "../../components/Home/CardsCart";
-import { CartContext } from "../../context/CartContext";
+import CardsCart from "../../../components/Home/CardsCart";
+import { CartContext } from "../../../context/CartContext";
 import Lottie from "lottie-react-native";
-import PageLayout from "../../components/General/PageLayout";
+import PageLayout from "../../../components/General/PageLayout";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { usePostStripePayment } from "../../hooks/Stripe/usePostStripePayment";
-import { AuthContext } from "../../context/AuthContext";
+import { usePostStripePayment } from "../../../hooks/Stripe/usePostStripePayment";
+import { AuthContext } from "../../../context/AuthContext";
 export default function Cart() {
   const { Cart, setCart } = useContext(CartContext);
   const { Auth } = useContext(AuthContext);
@@ -41,7 +41,7 @@ export default function Cart() {
                   loop
                   resizeMode="cover"
                   style={{ flex: 1 }}
-                  source={require("../../animations/Cart.json")}
+                  source={require("../../../animations/Cart.json")}
                 />
               </View>
 

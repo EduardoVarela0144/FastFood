@@ -5,7 +5,13 @@ import { useNavigation } from "@react-navigation/native"
 export default function Cards({ name, price, description, image, item }) {
   const navigation = useNavigation();
   return (
-    <View className="bg-white rounded-xl p-4 flex-row h-48 shadow-lg">
+    <View className="bg-white rounded-xl p-4 flex-row shadow items-center">
+      <View className="flex-1">
+        <Image
+          className="rounded-xl aspect-square"
+          source={{ uri: image }}
+        />
+      </View>
       <View className="flex-1 px-3">
         <Text className="font-bold text-xl">{name}</Text>
         <Text className="font-semibold text-md">$ {price} MXN</Text>
@@ -16,12 +22,6 @@ export default function Cards({ name, price, description, image, item }) {
             <Text className="text-white">Ver más</Text>
           </TouchableOpacity>
         </View>
-      </View>
-      <View className="flex-1">
-        <Image
-          className="flex-1 object-contain rounded-xl"
-          source={{ uri: image }}
-        />
       </View>
     </View>
   );
