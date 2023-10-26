@@ -1,8 +1,8 @@
 import api, { productUrl } from "../services/api";
 
 class ProductsRepository {
-  async getProducts() {
-    const response = await api.get(`${productUrl}`);
+  async getProducts(filter) {
+    const response = await api.get(`${productUrl}/?name=${filter}`);
     return response.data;
   }
   async postProduct(product) {

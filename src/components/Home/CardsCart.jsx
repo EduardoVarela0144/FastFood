@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 export default function Cards_Products({ item, setCart }) {
 
@@ -27,7 +28,7 @@ export default function Cards_Products({ item, setCart }) {
         <View className="flex w-2/3 flex-col justify-between pr-1">
           <Text className="font-bold text-ellipsis overflow-hidden">{item.name}</Text>
           <Text className="text-xs text-ellipsis overflow-hidden h-9 text-zinc-800">{item.description}</Text>
-          <Text className="w-full font-bold mt-2 text-left">$ {item.price} MXN</Text>
+          <Text className="w-full font-bold mt-2 text-left">$ {item.price * item.quantity} MXN</Text>
         </View>
 
         <View className="w-1/3 flex-row items-center justify-between">
@@ -36,16 +37,16 @@ export default function Cards_Products({ item, setCart }) {
             onPress={() => changueQuantity(item, -1)}
             className="flex bg-red-500 rounded-full w-6 aspect-square items-center justify-center"
           >
-            <Text className="text-white text-center text-md">-</Text>
+            <Text className="text-white text-center text-sm">-</Text>
           </TouchableOpacity>
 
-          <Text className="font-bold">{item.quantity}</Text>
+          <Text className="font-semibold text-lg px-1">{item.quantity}</Text>
 
           <TouchableOpacity
             onPress={() => changueQuantity(item, 1)}
-            className="flex bg-green-500 rounded-full w-6 aspect-square items-center justify-center"
+            className={`flex bg-green-500 rounded-full w-6 aspect-square items-center justify-center`}
           >
-            <Text className="text-white text-center text-md">+</Text>
+            <Text className="text-white text-center text-sm">+</Text>
           </TouchableOpacity>
         </View>
 
