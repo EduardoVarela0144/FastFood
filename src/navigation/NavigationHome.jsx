@@ -6,6 +6,7 @@ const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import AddProduct from "../screens/Admin/AddProduct";
+import SellerAddProduct from "../screens/Seller/SellerAddProduct";
 import { AuthContext } from "../context/AuthContext";
 import { ROLES } from "../config";
 export default function NavigationTap() {
@@ -55,6 +56,13 @@ export default function NavigationTap() {
         <Tab.Screen
           name="Nuevo"
           component={AddProduct}
+          options={{ headerShown: false }}
+        />
+      )}
+      {Auth.rol === ROLES.seller && (
+        <Tab.Screen
+          name="Nuevo"
+          component={SellerAddProduct}
           options={{ headerShown: false }}
         />
       )}
