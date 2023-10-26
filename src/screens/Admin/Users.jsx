@@ -1,12 +1,36 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import PageLayout from "../../components/General/PageLayout";
 import { useGetAllUsers } from "../../hooks/Users/useGetAllUsers";
 import UserCard from "./components/UserCard";
 import { SwipeListView } from "react-native-swipe-list-view";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Users() {
   const { data } = useGetAllUsers();
+  const navigation = useNavigation();
+
+  const deleteUser = (item) => {
+    Alert.alert(
+      "Confirmación",
+      `¿Seguro que deseas eliminar al usuario ${item.firstName}?`,
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancelado"),
+          style: "cancel",
+        },
+        {
+          text: "Eliminar",
+          onPress: () => {
+            console.log("Elemento eliminado");
+          },
+          style: "destructive",
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
   const renderHiddenItem = (data) => {
     const { item } = data;
@@ -15,13 +39,15 @@ export default function Users() {
         <TouchableOpacity
           className="rounded-r-xl"
           style={[styles.backRightBtn, styles.backRightBtnRight]}
-          onPress={() => onDelete(item)}
+          onPress={() => deleteUser(item)}
         >
           <Text style={styles.backTextWhite}>Eliminar</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
-          onPress={() => onEdit(item)}
+          onPress={() => {
+            navigation.navigate("Product Info", { item: item });
+          }}
         >
           <Text className="text-white">Editar</Text>
         </TouchableOpacity>
