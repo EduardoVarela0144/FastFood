@@ -16,6 +16,28 @@ class UsersRepository {
         return response.data;
       }
 
+
+      async editUser(id) {
+        const response = await api.put(`${userUrl}/${id}`);
+        return response.data;
+      }
+
+
+      async deleteUser(id) {
+        const response = await api.delete(`${userUrl}/${id}`);
+        return response.data;
+      }
+
+      async getUser(id) {
+        const response = await api.get(`${userUrl}/${id}`);
+        return response.data;
+      }
+
+
+
+
+     
+
 }
 
 export default new UsersRepository();
