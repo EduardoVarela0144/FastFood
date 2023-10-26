@@ -2,11 +2,11 @@ import { useMutation } from "react-query";
 import UsersRepository from "../../repositories/UsersRepository";
 
 function useAddUser() {
-  const postAddUserMutation = useMutation(UsersRepository.signUp);
+  const postAddUserMutation = useMutation(UsersRepository.addUser);
 
   const addUser = async (user) => {
     try {
-      await postSignUpMutation.mutateAsync(user);
+      await postAddUserMutation.mutateAsync(user);
       alert("El usuario se guardó con éxito");
     } catch (error) {
       if (

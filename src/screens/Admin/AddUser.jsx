@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Alert } from "react-native";
 import PageLayout from "../../components/General/PageLayout";
-import { ROLES } from "../../config";
 import { TextInput, Button } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { requiredFieldsTranslate } from "../../config";
+import { useAddUser } from "../../hooks/Users/useAddUser";
+import { ROLES } from "../../config";
 
 export default function AddUser() {
+  const { addUser } = useAddUser();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -28,6 +31,46 @@ export default function AddUser() {
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const saveUser = () => {
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "middleName",
+      "email",
+      "password",
+    ];
+
+    const missingFields = requiredFields.filter(
+      (fieldName) => !formData[fieldName]
+    );
+
+    if (missingFields.length === 0) {
+      addUser(formData).then(() => {
+        setFormData({
+          firstName: "",
+          lastName: "",
+          middleName: "",
+          email: "",
+          password: "",
+          registrationNumber: "",
+          accountNumber: "",
+          profilePicture: "",
+          major: "",
+          building: "",
+          rol: "",
+        });
+      });
+    } else {
+      const translatedMissingFields = missingFields.map(
+        (fieldName) => requiredFieldsTranslate[fieldName]
+      );
+      const missingFieldsMessage = `Por favor complete los siguientes campos: ${translatedMissingFields.join(
+        ", "
+      )}`;
+      Alert.alert("Campos faltantes", missingFieldsMessage);
+    }
   };
 
   return (
@@ -121,7 +164,7 @@ export default function AddUser() {
           <Button
             mode="contained"
             buttonColor="#3a6ea6"
-            onPress={() => console.log("Pressed")}
+            onPress={() => saveUser()}
           >
             Crear nuevo usuario
           </Button>

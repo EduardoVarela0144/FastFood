@@ -17,6 +17,11 @@ class UsersRepository {
       }
 
 
+      async addUser(user) {
+        const response = await api.post(`${userUrl}`, user);
+        return response.data;
+      }
+
       async editUser(id) {
         const response = await api.put(`${userUrl}/${id}`);
         return response.data;
