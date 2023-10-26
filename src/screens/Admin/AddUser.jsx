@@ -27,6 +27,7 @@ export default function AddUser() {
     setFormData({ ...formData, [fieldName]: value });
   };
 
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {

@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import PageLayout from "../../components/General/PageLayout";
 import { useGetAllUsers } from "../../hooks/Users/useGetAllUsers";
 import UserCard from "./components/UserCard";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { useNavigation } from "@react-navigation/native";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function Users() {
-  const { data } = useGetAllUsers();
+  
+  const { data, refetch } = useGetAllUsers();
   const navigation = useNavigation();
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) refetch();
+  }, [isFocused]);
+
 
   const deleteUser = (item) => {
     Alert.alert(

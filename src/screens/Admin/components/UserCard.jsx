@@ -23,7 +23,6 @@ export default function UserCard({ item }) {
               tintColor="white"
               size={95}
             />
-            <Text className="text-center">{item.firstName}</Text>
           </View>
         )}
       </View>
