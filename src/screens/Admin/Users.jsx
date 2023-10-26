@@ -58,7 +58,7 @@ export default function Users() {
   return (
     <PageLayout>
       <View className="px-4 flex-1">
-        <TouchableOpacity className="bg-FastFood rounded-md items-center py-2 my-4">
+        <TouchableOpacity onPress={() => navigation.navigate("AddUser")} className="bg-FastFood rounded-md items-center py-2 my-4">
           <Text className="text-white font-bold text-ceneter">
             Crear nuevo administrador
           </Text>

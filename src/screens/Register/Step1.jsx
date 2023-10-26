@@ -14,6 +14,7 @@ export default function Step1({ formData, handleFieldChange }) {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
