@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import NavigationLogin from "./src/navigation/NavigationLogin";
 import { StripeProvider } from "@stripe/stripe-react-native";
 import { STRIPE_KEY } from "./src/config";
+import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
   const [Cart, setCart] = useState([]);
@@ -26,10 +27,12 @@ export default function App() {
       <StripeProvider publishableKey={STRIPE_KEY}>
         <AuthContext.Provider value={{ Auth, setAuth }}>
           <CartContext.Provider value={{ Cart, setCart }}>
-            <NavigationContainer>
-              <StatusBar style="auto" />
-              {mainComponent}
-            </NavigationContainer>
+            <PaperProvider>
+              <NavigationContainer>
+                <StatusBar style="auto" />
+                {mainComponent}
+              </NavigationContainer>
+            </PaperProvider>
           </CartContext.Provider>
         </AuthContext.Provider>
       </StripeProvider>

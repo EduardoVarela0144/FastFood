@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <View className="px-4">
+      <View className="px-4 space-y-4">
         <SearchBar />
 
         <FlatList
@@ -26,7 +26,7 @@ export default function Home() {
           }}
           data={data}
           keyExtractor={(item) => item._id}
-          className="py-4"
+          className="pb-4"
           renderItem={({ item }) => (
             <CardsHome
               item={item}
