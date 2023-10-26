@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Cart from "../screens/Home/components/Cart";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NavigationCards from "./NavigationProducts";
+import NavigationMyProducts from "./NavigationMyProducts";
 const Tab = createBottomTabNavigator();
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
@@ -27,7 +28,7 @@ export default function NavigationTap() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "Productos") {
+          if (route.name === "Productos" || route.name === "Mis Productos") {
             iconName = "food";
           } else if (route.name === "Carrito") {
             iconName = "cart";
@@ -52,15 +53,24 @@ export default function NavigationTap() {
           options={{ headerShown: false, tabBarBadge: totalItemsInCart }}
         />
       )}
-      <Tab.Screen
+      {Auth.rol === ROLES.student && (
+        <Tab.Screen
         name="Productos"
         component={NavigationCards}
         options={{ headerShown: false }}
       />
+      )}
       {Auth.rol === ROLES.admin && (
         <Tab.Screen
           name="Nuevo"
           component={AddProduct}
+          options={{ headerShown: false }}
+        />
+      )}
+      {Auth.rol === ROLES.seller && (
+        <Tab.Screen
+          name="Mis Productos"
+          component={NavigationMyProducts}
           options={{ headerShown: false }}
         />
       )}
