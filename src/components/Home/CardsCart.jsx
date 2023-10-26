@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 export default function Cards_Products({ item, setCart }) {
-  
+
   const changueQuantity = (item, amount) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((cartItem) =>
@@ -18,43 +18,38 @@ export default function Cards_Products({ item, setCart }) {
   };
 
   return (
-    <View className="bg-white h-48 justify-center rounded-2xl shadow-sm px-2 py-2">
-      <View className="w-full flex flex-row justify-between  h-full ">
-        <View className="flex-1 h-full ">
-          <Image
-            className="flex-1 object-contain rounded-xl"
-            source={{ uri: item.image }}
-          />
+    <View className="bg-white rounded-2xl shadow-sm py-4 px-3 w-full flex flex-row justify-between items-center space-x-3">
+      <Image
+        className="flex h-20 rounded-xl aspect-square"
+        source={{ uri: item.image }}
+      />
+      <View className="flex-1 flex-row items-center justify-center space-x-1">
+        <View className="flex w-2/3 flex-col justify-between pr-1">
+          <Text className="font-bold text-ellipsis overflow-hidden">{item.name}</Text>
+          <Text className="text-xs text-ellipsis overflow-hidden h-9 text-zinc-800">{item.description}</Text>
+          <Text className="w-full font-bold mt-2 text-left">$ {item.price} MXN</Text>
         </View>
-        <View className="flex-1 flex-col  items-center justify-center">
-          <View className="flex-1 items-center justify-end">
-            <Text className="font-bold text-xl">{item.name}</Text>
 
-            <Text className="font-bold text-2xl">$ {item.price} MXN</Text>
-          </View>
-          <View className="flex-1 pt-2  flex-row items-start justify-start ">
-            <View className=" flex-1 items-center">
-              <TouchableOpacity
-                disabled={item.quantity === 0 ? true : false}
-                onPress={() => changueQuantity(item, -1)}
-                className="bg-red-500 w-8 h-8 items-center justify-center rounded-full"
-              >
-                <Text className="font-bold text-xl text-white">-</Text>
-              </TouchableOpacity>
-            </View>
-            <View className="bg-slate-100 flex-1 items-center rounded-lg py-2">
-              <Text className="font-bold">{item.quantity}</Text>
-            </View>
-            <View className=" flex-1 items-center">
-              <TouchableOpacity
-                onPress={() => changueQuantity(item, 1)}
-                className="bg-green-500 w-8 h-8 items-center justify-center rounded-full"
-              >
-                <Text className="font-bold text-xl text-white">+</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+        <View className="w-1/3 flex-row items-center justify-between">
+          <TouchableOpacity
+            disabled={item.quantity === 0 ? true : false}
+            onPress={() => changueQuantity(item, -1)}
+            className="flex bg-red-500 rounded-full w-6 aspect-square items-center justify-center"
+          >
+            <Text className="text-white text-center text-md">-</Text>
+          </TouchableOpacity>
+
+          <Text className="font-bold">{item.quantity}</Text>
+
+          <TouchableOpacity
+            onPress={() => changueQuantity(item, 1)}
+            className="flex bg-green-500 rounded-full w-6 aspect-square items-center justify-center"
+          >
+            <Text className="text-white text-center text-md">+</Text>
+          </TouchableOpacity>
         </View>
+
+
       </View>
     </View>
   );
