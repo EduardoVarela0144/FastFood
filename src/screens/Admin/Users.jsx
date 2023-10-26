@@ -13,7 +13,7 @@ export default function Users() {
     return (
       <View className="bg-white items-center flex-1 justify-between">
         <TouchableOpacity
-        className="rounded-r-xl"
+          className="rounded-r-xl"
           style={[styles.backRightBtn, styles.backRightBtnRight]}
           onPress={() => onDelete(item)}
         >
@@ -23,7 +23,7 @@ export default function Users() {
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => onEdit(item)}
         >
-          <Text className="text-white" >Editar</Text>
+          <Text className="text-white">Editar</Text>
         </TouchableOpacity>
       </View>
     );
@@ -32,6 +32,11 @@ export default function Users() {
   return (
     <PageLayout>
       <View className="px-4 flex-1">
+        <TouchableOpacity className="bg-FastFood rounded-md items-center py-2 my-4">
+          <Text className="text-white font-bold text-ceneter">
+            Crear nuevo administrador
+          </Text>
+        </TouchableOpacity>
         <SwipeListView
           data={data}
           renderItem={UserCard}
@@ -39,7 +44,7 @@ export default function Users() {
           leftOpenValue={0}
           rightOpenValue={-150}
           showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={<View className="h-6"/>}
+          ItemSeparatorComponent={<View className="h-6" />}
         />
       </View>
     </PageLayout>
