@@ -13,7 +13,7 @@ import { useAddUser } from "../../hooks/Users/useAddUser";
 export default function Stepper() {
 
   const { addUser } = useAddUser();
-  
+
   const route = useRoute();
   const { rol } = route.params;
   const [formData, setFormData] = useState({
@@ -45,6 +45,8 @@ export default function Stepper() {
     );
 
     if (missingFields.length === 0) {
+      formData.rol = rol;
+      console.log(formData);
       addUser(formData).then(() => {
         setFormData({
           firstName: "",
