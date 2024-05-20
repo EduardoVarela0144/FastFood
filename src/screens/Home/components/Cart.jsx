@@ -30,8 +30,8 @@ export default function Cart() {
       <View className="px-4 flex-1 py-4">
         <FlatList
           data={Cart}
-          keyExtractor={(item) => item._id.toString()}
-          renderItem={({ item }) => <CardsCart item={item} setCart={setCart} />}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={( {item }) => <CardsCart item={item} setCart={setCart} />}
           ItemSeparatorComponent={<View className="h-6" />}
           ListEmptyComponent={
             <View className="items-center  flex-1 h-72 space-y-2">

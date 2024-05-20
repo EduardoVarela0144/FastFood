@@ -34,8 +34,8 @@ export default function Home() {
               contentContainerStyle={{
                 paddingBottom: 80,
               }}
-              data={data}
-              keyExtractor={(item) => item._id}
+              data={data?.products}
+              keyExtractor={(item) => item.id}
               className="pb-4"
               renderItem={({ item }) => (
                 <CardsHome

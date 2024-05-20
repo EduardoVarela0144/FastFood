@@ -26,10 +26,10 @@ export const axiosInstanceFile = axios.create({
   headers: headersFiles
 });
 
-export const userUrl = "/ulsafoods/users";
-export const productUrl = "/ulsafoods/products";
-export const cartUrl = "/ulsafoods/carts";
-export const imagesUrl = "/ulsafoods/images/upload";
+export const userUrl = "/api/users";
+export const productUrl = "/api/products";
+export const cartUrl = "/api/carts";
+export const imagesUrl = "/api/images";
 
 
 

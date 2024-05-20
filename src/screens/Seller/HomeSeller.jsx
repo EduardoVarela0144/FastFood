@@ -12,9 +12,9 @@ export default function HomeSeller() {
   const { data, refetch } = useGetProducts();
   const isFocused = useIsFocused();
   const { Auth } = useContext(AuthContext);
-  const user = Auth._id;
+  const user = Auth.id;
 
-  const filteredData = data.filter((item) => item.seller._id === user);
+  const filteredData = data.filter((item) => item.seller.id === user);
   
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function HomeSeller() {
             paddingBottom: 80,
           }}
           data={filteredData}
-          keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item.id}
           className="pb-4"
           renderItem={({ item }) => (
             <CardsEdit

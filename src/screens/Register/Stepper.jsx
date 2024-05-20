@@ -7,8 +7,13 @@ import Step2 from "./Step2";
 import useUploadFile from "../../hooks/Images/useUploadFile";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useAddUser } from "../../hooks/Users/useAddUser";
+
 
 export default function Stepper() {
+
+  const { addUser } = useAddUser();
+  
   const route = useRoute();
   const { rol } = route.params;
   const [formData, setFormData] = useState({
@@ -24,6 +29,47 @@ export default function Stepper() {
     building: "",
     rol: rol,
   });
+
+
+  const saveUser = () => {
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "middleName",
+      "email",
+      "password",
+    ];
+
+    const missingFields = requiredFields.filter(
+      (fieldName) => !formData[fieldName]
+    );
+
+    if (missingFields.length === 0) {
+      addUser(formData).then(() => {
+        setFormData({
+          firstName: "",
+          lastName: "",
+          middleName: "",
+          email: "",
+          password: "",
+          registrationNumber: "",
+          accountNumber: "",
+          profilePicture: "",
+          major: "",
+          building: "",
+          rol: "",
+        });
+      });
+    } else {
+      const translatedMissingFields = missingFields.map(
+        (fieldName) => requiredFieldsTranslate[fieldName]
+      );
+      const missingFieldsMessage = `Por favor complete los siguientes campos: ${translatedMissingFields.join(
+        ", "
+      )}`;
+      Alert.alert("Campos faltantes", missingFieldsMessage);
+    }
+  };
 
   const handleFieldChange = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value });

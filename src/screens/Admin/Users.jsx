@@ -73,7 +73,7 @@ export default function Users() {
           </Text>
         </TouchableOpacity>
         <SwipeListView
-          data={data}
+          data={data?.users}
           renderItem={UserCard}
           renderHiddenItem={renderHiddenItem}
           leftOpenValue={0}

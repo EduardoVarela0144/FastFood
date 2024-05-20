@@ -12,7 +12,7 @@ function useUploadPicture() {
     try {
       await uploadPictureMutation
         .mutateAsync(picture)
-        .then((response) => setImageId(response.document.downloadUrl));
+        .then((response) => setImageId(response.downloadUrl));
     } catch (error) {
       Alert.alert("Error", error.message);
     }

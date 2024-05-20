@@ -9,6 +9,7 @@ function useAddUser() {
       await postAddUserMutation.mutateAsync(user);
       alert("El usuario se guardó con éxito");
     } catch (error) {
+      console.log(error)
       if (
         error.response &&
         error.response.data &&

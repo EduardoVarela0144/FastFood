@@ -141,7 +141,7 @@ const useUploadFile = (camera, gallery) => {
               >
                 <MaterialCommunityIcons
                   name="camera"
-                  color={"#F59E0B"}
+                  color={"#3a6ea6"}
                   size={50}
                 />
                 <Text className="font-bold text-md">Tomar foto</Text>
@@ -156,7 +156,7 @@ const useUploadFile = (camera, gallery) => {
               >
                 <MaterialCommunityIcons
                   name="image"
-                  color={"#F59E0B"}
+                  color={"#3a6ea6"}
                   size={50}
                 />
                 <Text className="font-bold text-md">Galería</Text>

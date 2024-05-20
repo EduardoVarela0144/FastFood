@@ -8,8 +8,8 @@ import {
   Alert,
   StyleSheet,
   Image,
+  ScrollView,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import PageLayout from "../../components/General/PageLayout";
 import { usePostProduct } from "../../hooks/Products/usePostPorduct";
 import { requiredProductFieldsTranslate } from "../../config";
@@ -21,7 +21,7 @@ import { AuthContext } from "../../context/AuthContext";
 export default function SellerAddProduct() {
   const { Auth } = useContext(AuthContext);
 
-  const user = Auth._id;
+  const user = Auth.id;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -87,11 +87,11 @@ export default function SellerAddProduct() {
     <PageLayout>
       <TouchableOpacity
         activeOpacity={1}
-        className=" justify-center items-center"
+        className="justify-center items-center"
         onPress={() => Keyboard.dismiss()}
       >
-        <GestureHandlerRootView className="flex w-full h-full">
-          <SafeAreaView className="rounded-xl px-4 w-full  shadow-xl items-center justify-center space-y-2 flex-1">
+        <GestureHandlerRootView className="flex w-full h-full ">
+          <View className="rounded-xl px-4 w-full  shadow-xl items-center justify-center space-y-2 flex-1 ">
             <View className="space-y-2 w-full">
               {formData.image ? (
                 <View className="items-center justify-center py-4">
@@ -166,7 +166,7 @@ export default function SellerAddProduct() {
             </TouchableOpacity>
             <BottomSheetr />
             <LoadingModal />
-          </SafeAreaView>
+          </View>
         </GestureHandlerRootView>
       </TouchableOpacity>
     </PageLayout>

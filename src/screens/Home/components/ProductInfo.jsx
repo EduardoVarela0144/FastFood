@@ -21,12 +21,13 @@ export default function ProductInfo() {
   const { Cart, setCart } = useContext(CartContext);
 
   const addToCart = (item, quantityChangue) => {
-    const existingItem = Cart.find((cartItem) => cartItem._id === item._id);
+    console.log(item, quantityChangue)
+    const existingItem = Cart.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
       setCart((prevCart) =>
         prevCart.map((cartItem) =>
-          cartItem._id === item._id
+          cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + quantityChangue }
             : cartItem
         )
@@ -48,7 +49,7 @@ export default function ProductInfo() {
   }
 
   return (
-    <View className="flex-1 bg-[#3a6ea6] ">
+    <View className="flex-1 bg-[#3a6ea6] pt-12">
       <NavBarTittle title="FastFood" />
       <View className="flex-1  rounded-b-3xl overflow-hidden object-contain">
         <Image

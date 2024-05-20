@@ -1,8 +1,8 @@
-import React from 'react'
-import { Text } from 'react-native'
-import PageLayout from '../../components/General/PageLayout'
-export default  function EditUser() {
-  
+import React, { useState } from "react";
+
+import { Text, View } from "react-native";
+import PageLayout from "../../components/General/PageLayout";
+export default function EditUser() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,14 +14,13 @@ export default  function EditUser() {
     profilePicture: "",
     major: "",
     building: "",
-    rol: rol,
+    rol: "",
   });
-    return (
-      <PageLayout>
-        <Text>
-          Hola
-        </Text>
-      </PageLayout>
-      
-    )
+  return (
+    <PageLayout>
+      <View className=" h-full items-center justify-center">
+        <Text className="text-2xl">Estamos trabajando ...</Text>
+      </View>
+    </PageLayout>
+  );
 }

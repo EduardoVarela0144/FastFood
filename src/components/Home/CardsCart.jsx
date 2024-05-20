@@ -4,7 +4,7 @@ export default function Cards_Products({ item, setCart }) {
   const changueQuantity = (item, amount) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((cartItem) =>
-        cartItem._id === item._id
+        cartItem.id === item.id
           ? { ...cartItem, quantity: cartItem.quantity + amount }
           : cartItem
       );

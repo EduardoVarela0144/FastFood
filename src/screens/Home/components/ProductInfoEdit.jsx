@@ -18,12 +18,12 @@ import {
     const { Cart, setCart } = useContext(CartContext);
   
     const addToCart = (item, quantityChangue) => {
-      const existingItem = Cart.find((cartItem) => cartItem._id === item._id);
+      const existingItem = Cart.find((cartItem) => cartItem.id === item.id);
   
       if (existingItem) {
         setCart((prevCart) =>
           prevCart.map((cartItem) =>
-            cartItem._id === item._id
+            cartItem.id === item.id
               ? { ...cartItem, quantity: cartItem.quantity + quantityChangue }
               : cartItem
           )
