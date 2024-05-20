@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import Lottie from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -12,6 +13,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AuthContext } from "../../context/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLogin } from "../../hooks/Users/useLogin";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -51,13 +53,13 @@ export default function Login() {
   const login = () => {
     postLogin(formData);
   };
-  
+
   const handleFieldChange = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value });
   };
   return (
-    <View className="items-center flex flex-1">
-      <View className="w-full flex-1  bg-[#3a6ea6]">
+    <View className="items-center flex flex-1 bg-[#3a6ea6] " >
+      <View className="w-full flex-1 ">
         <Text className="text-white font-bold mt-16 text-center text-3xl">
           UniFoods
         </Text>
@@ -77,7 +79,7 @@ export default function Login() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
-        <View className="w-full flex-1 items-center  px-10">
+        <View className="w-full flex-1 items-center  px-10 bg-slate-100">
           <View className="w-full  justify-center space-y-6 mt-8">
             <Text className="font-bold text-2xl">Inicio de sesión</Text>
             <View className="space-y-1">
@@ -85,7 +87,7 @@ export default function Login() {
                 Correo electrónico
               </Text>
               <TextInput
-              autoCapitalize="none"
+                autoCapitalize="none"
                 placeholder="Correo electrónico"
                 className="border border-1 bg-white border-white rounded-xl w-full py-3 px-2"
                 value={formData.email}
@@ -116,7 +118,10 @@ export default function Login() {
               </View>
             </View>
 
-            <TouchableOpacity onPress={() => login()} className="bg-[#3a6ea6] rounded-full w-full items-center py-2">
+            <TouchableOpacity
+              onPress={() => login()}
+              className="bg-[#3a6ea6] rounded-full w-full items-center py-2"
+            >
               <Text className="text-white font-bold text-xl">
                 Iniciar sesión
               </Text>

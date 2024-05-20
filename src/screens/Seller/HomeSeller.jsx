@@ -1,5 +1,4 @@
-import { View, Text, FlatList, TextInput } from "react-native";
-import CardsHome from "../../components/Home/CardsHome";
+import { View, FlatList } from "react-native";
 import CardsEdit from "../../components/Home/CardsEdit";
 import PageLayout from "../../components/General/PageLayout";
 import { useGetProducts } from "../../hooks/Products/useGetProducts";

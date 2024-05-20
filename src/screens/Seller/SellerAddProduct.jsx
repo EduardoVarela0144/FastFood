@@ -13,16 +13,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import PageLayout from "../../components/General/PageLayout";
 import { usePostProduct } from "../../hooks/Products/usePostPorduct";
 import { requiredProductFieldsTranslate } from "../../config";
-import { useGetAllUsers } from "../../hooks/Users/useGetAllUsers";
-import { Dropdown } from "react-native-element-dropdown";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useUploadFile from "../../hooks/Images/useUploadFile";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function SellerAddProduct() {
-  
-
   const { Auth } = useContext(AuthContext);
 
   const user = Auth._id;
@@ -77,15 +73,6 @@ export default function SellerAddProduct() {
       Alert.alert("Campos faltantes", missingFieldsMessage);
     }
   };
-
-  const { data } = useGetAllUsers();
-
-  const formattedData = Array.isArray(data)
-    ? data.map((item) => ({
-        label: item.firstName,
-        value: item._id,
-      }))
-    : [];
 
   const { bottomSheetRef, BottomSheetr, urlImageFinal, LoadingModal } =
     useUploadFile(true, true);

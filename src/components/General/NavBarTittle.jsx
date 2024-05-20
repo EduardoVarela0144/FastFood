@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Platform, TouchableOpacity, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, Platform, Pressable } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/core'
 import { MaterialCommunityIcons } from "@expo/vector-icons";

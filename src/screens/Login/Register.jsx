@@ -30,7 +30,7 @@ export default function Register() {
   const role = [ROLES.student, ROLES.seller];
 
   return (
-    <SafeAreaView className="flex-1 ">
+    <SafeAreaView className="flex-1 py-12">
       <View className="flex w-full px-4">
         <TouchableOpacity
           onPress={() => navigation.goBack()}

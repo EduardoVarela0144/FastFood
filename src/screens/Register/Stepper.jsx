@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {
-  SafeAreaView,
-  Text,
-  View,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { ROLES, ROLES_TRANSLATE } from "../../config";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import { useSignUp } from "../../hooks/Users/useSignUp";
-import { requiredFieldsTranslate } from "../../config";
 import useUploadFile from "../../hooks/Images/useUploadFile";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Stepper() {
-  const { postSignUp } = useSignUp();
   const route = useRoute();
   const { rol } = route.params;
   const [formData, setFormData] = useState({
@@ -72,50 +63,6 @@ export default function Stepper() {
     }
   };
 
-  const saveUser = () => {
-    const requiredFields = [
-      "firstName",
-      "lastName",
-      "middleName",
-      "email",
-      "password",
-      "registrationNumber",
-      "profilePicture",
-      "major",
-      "building",
-    ];
-
-    const requiredFieldsSeller = [
-      "firstName",
-      "lastName",
-      "middleName",
-      "email",
-      "password",
-      "registrationNumber",
-      "accountNumber",
-      "profilePicture",
-      "major",
-      "building",
-    ];
-
-    const required =
-      rol === ROLES.seller ? requiredFieldsSeller : requiredFields;
-
-    const missingFields = required.filter((fieldName) => !formData[fieldName]);
-
-    if (missingFields.length === 0) {
-      postSignUp(formData);
-    } else {
-      const translatedMissingFields = missingFields.map(
-        (fieldName) => requiredFieldsTranslate[fieldName]
-      );
-      const missingFieldsMessage = `Por favor complete los siguientes campos: ${translatedMissingFields.join(
-        ", "
-      )}`;
-      Alert.alert("Campos faltantes", missingFieldsMessage);
-    }
-  };
-
   const { bottomSheetRef, BottomSheetr, urlImageFinal, LoadingModal } =
     useUploadFile(true, true);
 
@@ -126,7 +73,7 @@ export default function Stepper() {
   }, [urlImageFinal]);
 
   return (
-    <GestureHandlerRootView className="flex flex-1 px-4">
+    <GestureHandlerRootView className="flex flex-1 px-4 pt-12">
       <SafeAreaView className="justify-center flex-1 p-2">
         <Text className="font-semibold text-4xl">
           Completa tu registro como
@@ -165,9 +112,9 @@ export default function Stepper() {
             {renderCurrentStepComponent()}
           </View>
         </View>
-        <View className="items-end">
+        <View className="absolute bottom-4 right-0 index-[100]">
           <TouchableOpacity
-            className="bg-white w-20 h-20 rounded-full items-center justify-center"
+            className="bg-[#3a6ea6] w-20 h-20 rounded-full items-center justify-center"
             onPress={() => {
               currentStep < steps.length
                 ? changeStep(
@@ -179,7 +126,7 @@ export default function Stepper() {
             <MaterialCommunityIcons
               name="arrow-right"
               size={36}
-              color={"black"}
+              color={"white"}
             />
           </TouchableOpacity>
         </View>

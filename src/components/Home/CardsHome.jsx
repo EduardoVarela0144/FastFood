@@ -1,5 +1,4 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native"
 
 export default function Cards({ name, price, description, image, item }) {

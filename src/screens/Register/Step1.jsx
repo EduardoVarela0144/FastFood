@@ -19,7 +19,7 @@ export default function Step1({ formData, handleFieldChange }) {
     <ScrollView
       showsVerticalScrollIndicator={false}
       className="mt-8 space-y-6 "
-      contentContainerStyle={{ paddingBottom: 200 }}
+      contentContainerStyle={{ paddingBottom: 10 }}
     >
       <View className="space-y-1">
         <Text className="font-bold ">Nombre</Text>

@@ -107,9 +107,9 @@ const useUploadFile = (camera, gallery) => {
       await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         aspect: [1, 1],
-        quality: 0.8, // Establece la calidad de la imagen en 0.8 (80% de calidad)
-        maxWidth: 1000, // Opcional: ajusta el ancho máximo de la imagen
-        maxHeight: 1000, // Opcional: ajusta el alto máximo de la imagen
+        quality: 0.8, 
+        maxWidth: 1000, 
+        maxHeight: 1000, 
       }).then((result) => {
         if (!result.canceled) {
           setUrlImage(result.uri);
@@ -123,10 +123,12 @@ const useUploadFile = (camera, gallery) => {
  
 
   const BottomSheetr = () => (
+    
     <BottomSheet
       ref={bottomSheetRef}
       snapPoints={[0.1, 10, 130]}
       initialSnap={0.1}
+      index={-1}
       enablePanDownToClose={true}
     >
       <View className="h-full">

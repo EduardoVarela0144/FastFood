@@ -1,7 +1,6 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Avatar } from "@react-native-material/core";
 import { ROLES_TRANSLATE } from "../../../config";
-import { SwipeListView } from 'react-native-swipe-list-view';
 
 
 export default function UserCard({ item }) {
