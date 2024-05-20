@@ -18,10 +18,47 @@ export const ROLES_TRANSLATE = {
 
 export const DEGREES = [
   {
-    label: "Ingeniería de Software y Sistemas Computacionales",
-    value: "Ingeniería de Software y Sistemas Computacionales",
+    label: "Ingeniería Informática",
+    value: "Ingeniería Informática",
+  },
+  {
+    label: "Ingeniería de Software",
+    value: "Ingeniería de Software",
+  },
+  {
+    label: "Tecnologías de la Información",
+    value: "Tecnologías de la Información",
+  },
+  {
+    label: "Ciencias de la Computación",
+    value: "Ciencias de la Computación",
+  },
+  {
+    label: "Ingeniería Electrónica",
+    value: "Ingeniería Electrónica",
+  },
+  {
+    label: "Administración de Empresas",
+    value: "Administración de Empresas",
+  },
+  {
+    label: "Medicina",
+    value: "Medicina",
+  },
+  {
+    label: "Derecho",
+    value: "Derecho",
+  },
+  {
+    label: "Psicología",
+    value: "Psicología",
+  },
+  {
+    label: "Arquitectura",
+    value: "Arquitectura",
   },
 ];
+
 
 export const BUILDINGS = [
   {
