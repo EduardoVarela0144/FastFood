@@ -22,9 +22,11 @@ export default function Register() {
 
   const onScroll = (event) => {
     const offsetX = event.nativeEvent.contentOffset.x;
-    const page = Math.floor(offsetX / screenWidth);
+    const page = Math.round(offsetX / screenWidth); // Redondear al número entero más cercano
+    
     setCurrentPage(page);
   };
+  
   const navigation = useNavigation();
 
   const role = [ROLES.student, ROLES.seller];
@@ -51,6 +53,7 @@ export default function Register() {
         <RegisterInfo screenWidth={screenWidth} user={ROLES.student} />
         <RegisterInfo screenWidth={screenWidth} user={ROLES.seller} />
       </ScrollView>
+
       <View className="space-y-6">
         <View className="px-4">
           <TouchableOpacity
